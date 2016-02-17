@@ -8,12 +8,6 @@
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
 
-## References
-
-* [Understanding Scope and Context in JavaScript](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
-* [Understand JavaScript’s “this”](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)
-* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)
-
 ## What is context
 
 Context is feature of the Javascript language related to how and when/where
@@ -166,11 +160,8 @@ var instructor = {
 instructor.displayFoods();
 ```
 
-## Exercise: Cat Surprise
+## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
 
-Fork [this codepen](http://codepen.io/adambray/pen/domXyg?editors=101).
-
-Notice that it's broken! Fix the JS so that clicking the image correctly alerts us to Mr. McWhiskertons' favorite pastimes.
 
 ## Call/Apply
 
@@ -206,6 +197,9 @@ sayHello.call(cat, "peachpuff");
 `apply` works almost exactly like `call`, only you pass in *array* of arguments
 instead of a comma-separated list.
 
+`apply` is useful when the number of arguments to pass to the function is unknown
+and/or arbitrary.
+
 See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 for more.
 
@@ -223,3 +217,9 @@ Note that #1 is included here for correctness, we haven't covered object constru
 >     `var probably_wont_work = bake()`
 >
 > Source: [You-Dont-Know-JS/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/58dbf4f867be0d9c51dfc341765e4e4211608aa1/this%20&%20object%20prototypes/ch2.md)
+
+## References
+
+* [Understanding Scope and Context in JavaScript](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
+* [Understand JavaScript’s “this”](http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/)
+* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)

@@ -7,17 +7,6 @@
 - Write a function that uses a closure to control access to data
 - Explain why and from what we are trying to protect data
 
-
-## References
-#### Closure
-
-* [Getting Closure](http://markdaggett.com/blog/2013/02/25/getting-closure/)
-* [Understand closures with ease](http://javascriptissexy.com/understand-javascript-closures-with-ease/)  
-* [Closure FAQ](http://jibbering.com/faq/notes/closures)
-* [Closure Use Cases](http://www.bennadel.com/blog/2134-a-random-exploration-of-closure-use-cases-in-javascript.htm)
-* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)
-
-
 ## What are Closures
 
 Closure is the property of function such that it can access variables in the same scope, i.e. scope chain, it was declared in. Even when that function is operating outside of that scope.
@@ -131,16 +120,16 @@ That is, it will create objects that represent a specific person.
 
 ```js
 function makePerson( fullName, currentAge ){
-  var _name = fullName;  // 1
-  var _age = currentAge;  // 1
+  var name = fullName;  // 1
+  var age = currentAge;  // 1
 
   var person = {   // 2  and 3
     getName: function(){
-      return( _name );
+      return( name );
     },
 
     getAge: function(){
-      return( _age - 10 );
+      return( age - 10 );
     }
   };
 
@@ -153,8 +142,8 @@ var bob = makePerson( "Bob", 45 ); //5
 // Check to see if the age property exists in a public
 // portion of the person instance.
 // 7
-console.log("Can we access the Bob's _age?")
-console.log("_age" in bob)  
+console.log("Can we access the Bob's age?")
+console.log("age" in bob)  
 
 // Get the age using the accessors.
 // 8
@@ -164,17 +153,24 @@ console.log(bob.getAge())
 
 ```
 
-1. By convention, private variable are prefixed by an underscore.  
-2. We are creating an object literal, `{ ... }`. This will have two properties, getName and getAge. The value for both of these properties are functions.  
-3. We assign this object literal to the variable person.  
-4. We return the object person to the calling function.
-5. We use the factory to create a "bob" person.  
-6. We check to see if we can access the private variable `_age` outside of the factory function. **We can't**  
-7. We get bob's age by calling the getAge method. *Of course it lies*. And we're hiding the lie!
+1. We are creating an object literal, `{ ... }`. This will have two properties, getName and getAge. The value for both of these properties are functions.  
+2. We assign this object literal to the variable person.  
+3. We return the object person to the calling function.
+4. We use the factory to create a "bob" person.  
+5. We check to see if we can access the private variable `age` outside of the factory function. **We can't**  
+6. We get bob's age by calling the getAge method. *Of course it lies*. And we're hiding the lie!
 
 
 Note, the interface to the object 'bob' is two functions/methods, getName and getAge. That's all that client code needs to know about bob.
 
-The implementation are the private variables `_name`, `_age` and the code inside the getName and getAge functions.
+The implementation are the private variables `name`, `age` and the code inside the getName and getAge functions.
 
 Client code does **NOT** need to be concerned with implementation details. Only with the interface.
+
+## References
+
+* [Getting Closure](http://markdaggett.com/blog/2013/02/25/getting-closure/)
+* [Understand closures with ease](http://javascriptissexy.com/understand-javascript-closures-with-ease/)  
+* [Closure FAQ](http://jibbering.com/faq/notes/closures)
+* [Closure Use Cases](http://www.bennadel.com/blog/2134-a-random-exploration-of-closure-use-cases-in-javascript.htm)
+* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)

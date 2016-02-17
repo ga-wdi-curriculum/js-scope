@@ -6,11 +6,6 @@
 - Describe the rules of scope in Javascript
 - Describe the impact of hoisting on variable scope
 
-## References
-
-* [Understanding Scope and Context in JavaScript](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
-* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)
-
 ## Why Scope? Why Now?
 
 >Understanding JavaScript scope is key to writing bulletproof code and being a better developer. You’ll understand where variables/functions are accessible, be able to change the scope of your code’s context and be able to write faster and more maintainable code, as well as debug much faster.
@@ -173,3 +168,8 @@ showAuto(1969);
 
 1. Describe the rules of scope in JS.
 2. Write an example program that tries to access a variable out of scope.
+
+## References
+
+* [Understanding Scope and Context in JavaScript](http://ryanmorr.com/understanding-scope-and-context-in-javascript/)
+* [Everything you wanted to know about JavaScript scope](http://toddmotto.com/everything-you-wanted-to-know-about-javascript-scope/)
