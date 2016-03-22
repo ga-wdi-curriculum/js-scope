@@ -259,7 +259,7 @@ necessary tool to accomplish this.
 An example of what this might look like:
 
 [ATM.js](https://github.com/ga-wdi-exercises/atm/blob/solution/solution/js/src/atm.js)
-
+[Tunr Song Model](https://github.com/ga-wdi-exercises/tunr_node_oojs/blob/oojs_cud/public/js/models/artist.js)
 ## Bonus Content: Call/Apply
 
 There are two other ways to invoke a function and change the context, which are
