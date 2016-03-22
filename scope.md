@@ -46,7 +46,7 @@ scope in which it is defined.
 ### Simple
 
 ```js
-favoriteAnimal = "Giraffe"  // no var -> global
+favoriteAnimal = "Giraffe";  // no var -> global
 var favoriteFood = "Tacos"; // global because not in any function
 
 function playBaseball() {
