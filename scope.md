@@ -18,6 +18,25 @@ where it can be used.
 Another way to think of scopes is that the scope is a list of all variables
 that can be accessed from the current line.
 
+## Quick Example
+
+```js
+function demo0() {
+  thingToDo = "boop";
+}
+
+console.log(thingToDo);
+
+
+function demo1() {
+  var recipient = "ur nose";
+}
+
+console.log(recipient);
+```
+
+What do we expect this code to do? Run it and see! Why?
+
 
 ## Rules of Scope in JS
 

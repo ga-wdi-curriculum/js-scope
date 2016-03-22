@@ -23,6 +23,8 @@ context is always an object, and can be referenced in the function definition
 Here's an example of the most common way context is determined for a function:
 when a method is called on an object, that object becomes the context:
 
+
+### 'Getting' Properties using `this`
 ```js
 var instructor = {
   name: "Adam Bray",
@@ -35,6 +37,8 @@ var instructor = {
 instructor.sayHello() // for this function invocation, `this` is `instructor`
 ```
 
+### 'Setting' Properties using `this`
+
 This feature allows not just 'getting' property info on objects, but also
 setting properties. Consider this example:
 
@@ -44,19 +48,63 @@ var xwing = {
 
     setPilot: function(newPilot) {
         this.pilot = newPilot;
-        this.notifyUpdate();
-    },
-
-    notifyUpdate: function() {
-        console.log('This X-Wing has changed!');
     }
 };
 
-xwing.setPilot("Luke Skywalker");
-// >> "This X-Wing has changed!"
+xwing.setPilot("Luke Skywalker"); //
+xwing.pilot //  >> "Luke Skywalker"
 
-console.log(xwing.pilot);
-// >> "Luke Skywalker"
+xwing.setPilot("Andy Kim");
+xwing.pilot;  // >> "Andy Kim"
+```
+
+*But what if we want more control?*
+
+Because we've written a method to set the `pilot` property, we can use that method to provide more control. For example... what if we wanted to prevent inexperienced pilots from flying?
+
+```js
+var xwing = {
+    pilot: null,
+
+    setPilot: function(newPilot) {
+      if (newPilot === "Andy Kim") {
+        console.log("Still in training, that pilot is.")  
+      }
+      else {        
+        this.pilot = newPilot;
+        console.log("Pilot changed!")
+      }
+    }
+  };
+
+xwing.setPilot("Luke Skywalker"); // "Pilot changed!"
+xwing.pilot //  >> "Luke Skywalker"
+
+
+xwing.setPilot("Andy Kim"); // "Still in training, that pilot is."
+xwing.pilot;  // >> "Luke Skywalker"
+```
+
+### 'Running' methods using `this`
+
+We can also use `this` to reference and call other methods on the object.
+
+```js
+var xwing = {
+    pilot: null,
+
+    setPilot: function(newPilot) {
+        this.pilot = newPilot;
+        this.updateYoda();
+    },
+
+    updateYoda: function() {
+      console.log("Yoda, we have got a new pilot!");
+    }
+};
+
+xwing.setPilot("Luke Skywalker"); // "Yoda, we have got a new pilot!"
+xwing.pilot //  >> "Luke Skywalker"
 ```
 
 ## Default Context
@@ -81,6 +129,20 @@ easy/common mistake for new and even experienced JS developers).
 
 ## Gotcha With `this`
 
+### Aside: forEach!
+
+```js
+var fruits = ["apples", "bananas", "cherries"];
+
+for(var i = 0; i < fruits.length; i++) {
+  console.log("Every day I eat two " + fruits[i]);
+}
+
+fruits.forEach(function(currentFruit) {
+  console.log("Every day I eat two " + currentFruit)
+});
+```
+
 ### Exercise - Write, Pair, Share (5 minutes)
 
 Consider the following example:
@@ -88,19 +150,40 @@ Consider the following example:
 ```js
 var instructor = {
   name: "Adam Bray",
-  favoriteFoods: ["Ramen", "Cap'n Crunch", "Butter"],
+  favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
+
   displayFoods: function() {
+    console.log("Things " + this.name + " likes:")
     this.favoriteFoods.forEach(function(food) {
-      console.log(this.name + " likes " + food);
+      console.log(food);
     })
   }
+
 }
 
 instructor.displayFoods();
 ```
 
-Using what we know about context, predict what the value of this will be on both
-lines where if is used.
+Using what we know about forEach... what do we expect the output to be?
+
+
+Now what about this *slightly* modified example:
+
+```js
+var instructor = {
+  name: "Adam Bray",
+  favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
+
+  displayFoods: function() {
+    this.favoriteFoods.forEach(function(food) {
+      console.log(this.name + " likes " + food);
+    })
+  }
+
+}
+
+instructor.displayFoods();
+```
 
 ### Answer
 
@@ -127,7 +210,7 @@ One trick is to store the `this` you want in another variable, commonly named
 ```js
 var instructor = {
   name: "Adam Bray",
-  favoriteFoods: ["Ramen", "Cap'n Crunch", "Butter"],
+  favoriteFoods: ["Ramen", "Cap'n Crunch", "Tacos"],
   displayFoods: function() {
     var self = this;
     this.favoriteFoods.forEach(function(food) {
@@ -149,7 +232,7 @@ always use the specified value as it's context.
 ```js
 var instructor = {
   name: "Adam Bray",
-  favoriteFoods: ["Ramen", "Cap'n Crunch", "Butter"],
+  favoriteFoods: ["Ramen", "Cap'n Crunch", "Tacos"],
   displayFoods: function() {
     this.favoriteFoods.forEach(function(food) {
       console.log(this.name + " likes " + food);
@@ -162,8 +245,22 @@ instructor.displayFoods();
 
 ## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
 
+## Bonus Exercise: Calculator with 'memory'
 
-## Call/Apply
+## Peek Ahead: OOP Javascript
+
+Often we have multiple pieces of data in our program that share the same structure...
+think flash cards, trivia cards, bank accounts, etc.
+
+In the future, we'll make these objects using `contructors` (think templates for each type),
+but then we need a way to talk about the structure in general. Context is a very
+necessary tool to accomplish this.
+
+An example of what this might look like:
+
+[ATM.js](https://github.com/ga-wdi-exercises/atm/blob/solution/solution/js/src/atm.js)
+
+## Bonus Content: Call/Apply
 
 There are two other ways to invoke a function and change the context, which are
 very similar: `call` and `apply`.
@@ -217,6 +314,7 @@ Note that #1 is included here for correctness, we haven't covered object constru
 >     `var probably_wont_work = bake()`
 >
 > Source: [You-Dont-Know-JS/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/58dbf4f867be0d9c51dfc341765e4e4211608aa1/this%20&%20object%20prototypes/ch2.md)
+
 
 ## References
 
