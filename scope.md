@@ -25,6 +25,7 @@ function demo0() {
   thingToDo = "boop";
 }
 
+demo0();
 console.log(thingToDo);
 
 
@@ -32,6 +33,7 @@ function demo1() {
   var recipient = "ur nose";
 }
 
+demo1();
 console.log(recipient);
 ```
 
