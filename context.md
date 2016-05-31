@@ -227,7 +227,7 @@ instructor.displayFoods();
 ### Bind
 
 Another way is to use the bind method on the function to force the function to
-always use the specified value as it's context.
+always use the specified value as its context.
 
 ```js
 var instructor = {
@@ -252,7 +252,7 @@ instructor.displayFoods();
 Often we have multiple pieces of data in our program that share the same structure...
 think flash cards, trivia cards, bank accounts, etc.
 
-In the future, we'll make these objects using `contructors` (think templates for each type),
+In the future, we'll make these objects using `constructors` (think templates for each type),
 but then we need a way to talk about the structure in general. Context is a very
 necessary tool to accomplish this.
 

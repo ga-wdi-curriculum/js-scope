@@ -38,7 +38,7 @@ sayHello();
 
 ## Passing Functions as Arguments
 
-We've already see passing functions as arguments in the case of event listeners:
+We've already seen passing functions as arguments in the case of event listeners:
 
 ```js
 function alertUser() {
@@ -101,7 +101,7 @@ console.log(  add10(2) ); // 12
 
 ## Encapsulation.
 
-Encapsulation is a software concept where one seperates the implementation from the interface that is used by clients.
+Encapsulation is a software concept where one separates the implementation from the interface that is used by clients.
 
 It's often good to *hide* the details of how something is being done from outside code, that is the client code.
 
