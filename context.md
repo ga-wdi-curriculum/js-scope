@@ -8,20 +8,73 @@
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
 
+## TLDR:
+
+`this` is whatever was to the **left of the period** when it was called, unless:
+- You're in an event listener function, in which case `this` is the thing that was clicked on
+- You're in another callback function, in which case `this` is probably the `Window`
+
+### For example
+
+```
+/*A*/
+var User = {
+    name: "john",
+    capitalized: function(){
+        /*B*/
+        return this.name.substring(0,1).toUpperCase() + this.name.substring(1);
+    },
+    sayName: function(){
+        /*C*/
+        alert("My name is " + this.capitalized() + ".");
+    }
+}
+
+console.log("Welcome, " + User.capitalized() + "!");
+$("button").on("click", User.sayName);
+$("input").on("keydown", function(){
+    /*D*/
+    console.log("Keypress detected for " + this.name);
+});
+User.sayName();
+/*E*/
+```
+
+When the code above is executed...
+
+1. What is the value of `this` at A?
+    1. `Window`
+    - `null`
+    - `User`
+    - `$` (jQuery)
+2. What is the value of `this` at B?
+    1. `Window`
+    - `null`
+    - `User`
+    - `$` (jQuery)
+3. Why does the `User.sayName` in the click event throw an error?
+    1. Because there aren't parentheses after `User.sayName`
+    - Because `User.sayName` is in an event so `this` is not `User`
+    - Because you can't use `alert` inside a function
+4. What is the value of `this` at D?
+    1. The `keydown` event
+    - `Window`
+    - The element that was keyed-down upon
+    - `User`
+5. Why does the `User.sayName()` at the end **not** throw an error?
+    1. Because `User.sayName` is *not* used in an event, so `this` is what was to the left of the period
+    - Because `User` didn't exist until it was created with the click event
+    - Because I prayed really hard when writing this that it would work
+
 ## What is context
 
-Context is feature of the Javascript language related to how and when/where
-functions are invoked (aka called).
+Context is feature of the Javascript language related to how and when/where functions are invoked (aka called).
 
-In short, the context is the object that a function is 'attached' to. (Though
-we'll see that context can change under certain circumstances).
+In short, the context is the object that a function is 'attached' to. (Though we'll see that context can change under certain circumstances).
 
-Every time a Javascript function is called, a context is determined / set. That
-context is always an object, and can be referenced in the function definition
-(code) using a special keyword in JS, `this`.
+Every time a Javascript function is called, a context is determined / set. That context is always an object, and can be referenced in the function definition (code) using a special keyword in JS, `this`.
 
-Here's an example of the most common way context is determined for a function:
-when a method is called on an object, that object becomes the context:
+Here's an example of the most common way context is determined for a function: when a method is called on an object, that object becomes the context:
 
 
 ### 'Getting' Properties using `this`
@@ -39,8 +92,7 @@ instructor.sayHello() // for this function invocation, `this` is `instructor`
 
 ### 'Setting' Properties using `this`
 
-This feature allows not just 'getting' property info on objects, but also
-setting properties. Consider this example:
+This feature allows not just 'getting' property info on objects, but also setting properties. Consider this example:
 
 ```js
 var xwing = {
@@ -109,9 +161,7 @@ xwing.pilot //  >> "Luke Skywalker"
 
 ## Default Context
 
-When a function is called, but it's not a method on an object, and no context
-is otherwise assigned (see later sections), then the context is set to the
-default context. In a browser, the default context is the `window` object.
+When a function is called, but it's not a method on an object, and no context is otherwise assigned (see later sections), then the context is set to the default context. In a browser, the default context is the `window` object.
 
 In node.js, the default object is called the global object.
 
@@ -123,9 +173,7 @@ function revealThis() {
 revealThis();
 ```
 
-Note that it is very rare to intentionally use `this` to refer to the window
-object. Usually this happens when we mistakenly use this incorrectly (a very
-easy/common mistake for new and even experienced JS developers).
+Note that it is very rare to intentionally use `this` to refer to the window object. Usually this happens when we mistakenly use this incorrectly (a very easy/common mistake for new and even experienced JS developers).
 
 ## Gotcha With `this`
 
@@ -187,14 +235,11 @@ instructor.displayFoods();
 
 ### Answer
 
-In the first case, `this` behaves like we would expect, (it references
-`instructor` since it's inside a function attached to an `instructor`.
+In the first case, `this` behaves like we would expect, (it references `instructor` since it's inside a function attached to an `instructor`.
 
-In the second case, `this` is inside an anonymous function, so it refers to the
-global object.
+In the second case, `this` is inside an anonymous function, so it refers to the global object.
 
-Note that this issue frequently appears anytime we use a callback / anonymous
-function, such as:
+Note that this issue frequently appears anytime we use a callback / anonymous function, such as:
 
 * using `setTimeout()` or `setInterval()` to schedule callbacks
 * using `forEach()` or other iteration functions
@@ -204,8 +249,7 @@ function, such as:
 
 ### Store `this` in another variable
 
-One trick is to store the `this` you want in another variable, commonly named
-`self` or `that`.
+One trick is to store the `this` you want in another variable, commonly named `self` or `that`.
 
 ```js
 var instructor = {
@@ -226,8 +270,7 @@ instructor.displayFoods();
 
 ### Bind
 
-Another way is to use the bind method on the function to force the function to
-always use the specified value as its context.
+Another way is to use the bind method on the function to force the function to always use the specified value as its context.
 
 ```js
 var instructor = {
@@ -249,12 +292,9 @@ instructor.displayFoods();
 
 ## Peek Ahead: OOP Javascript
 
-Often we have multiple pieces of data in our program that share the same structure...
-think flash cards, trivia cards, bank accounts, etc.
+Often we have multiple pieces of data in our program that share the same structure... think flash cards, trivia cards, bank accounts, etc.
 
-In the future, we'll make these objects using `constructors` (think templates for each type),
-but then we need a way to talk about the structure in general. Context is a very
-necessary tool to accomplish this.
+In the future, we'll make these objects using `constructors` (think templates for each type), but then we need a way to talk about the structure in general. Context is a very necessary tool to accomplish this.
 
 An example of what this might look like:
 
@@ -262,8 +302,7 @@ An example of what this might look like:
 [Tunr Song Model](https://github.com/ga-wdi-exercises/tunr_node_oojs/blob/oojs_cud/public/js/models/artist.js)
 ## Bonus Content: Call/Apply
 
-There are two other ways to invoke a function and change the context, which are
-very similar: `call` and `apply`.
+There are two other ways to invoke a function and change the context, which are very similar: `call` and `apply`.
 
 Here's an example of how to use call:
 
@@ -291,14 +330,11 @@ sayHello.call(person, "blue");
 sayHello.call(cat, "peachpuff");
 ```
 
-`apply` works almost exactly like `call`, only you pass in *array* of arguments
-instead of a comma-separated list.
+`apply` works almost exactly like `call`, only you pass in *array* of arguments instead of a comma-separated list.
 
-`apply` is useful when the number of arguments to pass to the function is unknown
-and/or arbitrary.
+`apply` is useful when the number of arguments to pass to the function is unknown and/or arbitrary.
 
-See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
-for more.
+See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) for more.
 
 ## Summary
 
