@@ -4,7 +4,9 @@
 
 - Define 'scope' in the context of programming
 - Describe the rules of scope in Javascript
+- Give an example of a function declaration and a function expression
 - Describe the impact of hoisting on variable scope
+- Describe the purpose of `use strict`
 
 ## Why Scope? Why Now?
 
@@ -12,11 +14,9 @@
 
 ## What is Scope?
 
-In programming, scope is where a variable can be referenced; in other words,
-where it can be used.
+In programming, scope is where a variable can be referenced; in other words, where it can be used.
 
-Another way to think of scopes is that the scope is a list of all variables
-that can be accessed from the current line.
+Another way to think of scopes is that the scope is a list of all variables that can be accessed from the current line.
 
 ## Quick Example
 
@@ -46,33 +46,27 @@ In Javascript, there are two types of scope, **global scope** and **local scope*
 
 There are four simple rules regarding scope in JS:
 
-1. Variables created without the `var` keyword, no matter where in a program,
-are placed in the global scope.
-2. Variables created *with* the `var` keyword are created in the current local scope.
+1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope.
+2. Variables created **with** the `var` keyword are created in the current local scope. **This is bad form.**
 3. All functions (and only functions) create a new local scope.
 4. The current scope includes all outer (enclosing) scopes.
 
 Another way to say this:
 
-* Local variables defined inside a function cannot be accessed from anywhere
-outside the function, because the variable is defined only in the scope of the
-function.
-* However, a function can access all variables and functions defined inside the
-scope in which it is defined.
+* Local variables defined inside a function cannot be accessed from anywhere outside the function, because the variable is defined only in the scope of the function.
+* However, a function can access all variables and functions defined inside the scope in which it is defined.
 
 **Note:** One consequence of rule 3 is that variables defined outside of any function are inherently global, even if the `var` keyword is used.
 
-## Examples
-
-### Simple
+### Example
 
 ```js
-favoriteAnimal = "Giraffe";  // no var -> global
-var favoriteFood = "Tacos"; // global because not in any function
+teamName = "Giraffes";  // no var -> global
+var teamCity = "Sioux Falls"; // global because not in any function
 
 function playBaseball() {
-  console.log(favoriteAnimal); // works, globals always in scope
-  console.log(favoriteFood);   // works, local variable in outer scope
+  console.log("From " + teamCity + "..."); // works, local variable in outer scope
+  console.log("Welcome the " + teamName + "!"); // works, globals always in scope
 
   pitcherName    = "Jesse Shawl";
   var batterName = "Breece Horper";
@@ -83,8 +77,8 @@ function playBaseball() {
 
 playBaseball()
 
-console.log(favoriteAnimal); // works, globals always in scope
-console.log(favoriteFood);   // works, local variable in current scope
+console.log(teamName); // works, globals always in scope
+console.log(teamCity);   // works, local variable in current scope
 
 console.log(pitcherName); // works, globals always in scope
 console.log(batterName);  // DOES NOT WORK, variable is an inner scope
@@ -92,19 +86,86 @@ console.log(batterName);  // DOES NOT WORK, variable is an inner scope
 console.dir(window); // note how favoriteAnimal / favoriteFood are properties of window.
 ```
 
+### Strict Mode
+
+The fact that Javascript lets you declare variables without `var` is heavily-criticized: it can make for some pretty gnarly code.
+
+So, "Strict Mode" was introduced. When you enable Strict Mode it "converts mistakes into errors": bad habits that would normally be swept under the rug by your browser now throw errors, forcing you to write better code.
+
+To enbale Strict Mode, simply make the first line of your `.js` file `"use strict";`.
+
+For example:
+
+```js
+fruit = "banana";
+
+// ...
+```
+
+```js
+"use strict";
+
+fruit = "banana";
+
+// Uncaught ReferenceError: fruit is not defined
+```
+
+## Hoisting
+
+### Functions
+
+There are two ways to declare functions in Javascript:
+
+```js
+var sayHello = function(){
+    console.log("Hello!");
+}
+
+function sayHello(){
+    console.log("Hello!");
+}
+```
+
+`var sayHello = function` is called a **function expression**. It follows the same rules as variables (except it's a function): it's only available in the lines after it.
+
+`function sayHello`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
+
+Aside from that, they are functionally equivalent.
+
+### Variables
+
+Variables are hoisted too, but *their values are not*.
+
+```js
+console.log("My name is " + name);
+
+var name = "John";
+
+// My name is undefined
+```
+
+```js
+console.log("My name is " + name);
+
+// Uncaught ReferenceError: name is not defined
+```
+
 ### More Interesting / Complex
 
 ```javascript
-var firstName = 'John'; // 1
-var lastName = 'Dowd'; // 2
-var age = 19; // 3
+var firstName = 'John';
+var lastName = 'Dowd';
+var age = 19;
 
-function displayPerson(fname, lname){ //4, 5
-  var prefix = 'Mr'; // 6
-  var fullName = null; // 6
+console.log(displayPerson(firstName, lastName));
+console.log(removeYears());
 
-  function getFullName(){ // 7
-    var suffix = "Esq.";  // Everybody's a lawyer, eh.
+function displayPerson(fname, lname){
+  var prefix = 'Mr';
+  var fullName = null;
+
+  function getFullName(){
+    var suffix = "Esq.";
     return  fullName = prefix + " " + fname + " " + lname + " " + suffix;
   };
 
@@ -117,73 +178,59 @@ function removeYears(){ // 8
   return age - minusYears;
 };
 
-console.log(displayPerson(firstName, lastName));
-console.log(removeYears());
-
 ```
 
+## Scope Matching
 
-* Here's how JS will parse this:
-
-    1. Found 'var firstName' variable declaration.  
-    Put firstName variable in Global Scope.  
-    2. Found 'var lastName' variable declaration.  
-    Put lastName in Global Scope.  
-    3. Found 'var age' variable declaration.  
-    Put age in Global Scope.  
-    4. Found 'var displayPerson' declaration.  
-    Put age in displayPerson in Global Scope.
-
-    **Notice that displayPerson's value is a function. So, create a inner scope and process this function.**
-
-    5. Found the fname and lname declarations.
-    *Note: functions arguments behave just like local variables.*
-    Put them in the displayPerson function scope.  
-    6. Found prefix, fullName variable declarations.  
-    Put them in the displayPerson function scope.  
-    7. Found getFullName declaration.  
-    Put getFullName in the displayPerson function scope.
-
-    **Notice that getFullName is a function. So, create an inner scope and  process this function.**
-    **All done with getFullName function, no more variable declarations.**
-    **All done with displayPerson function, no more variable declarations.**
-
-    ![Scope](assets/JS_Scope1.png)
-
-    8. Found removeYears variable declaration.
-    Put removeYears in Global scope.  
-
-    **Notice that removeYears value is a function. So, create a inner scope and process this function.**
-
-    9. Found age and minusYears variable declarations.  
-    Put these in the function's scope.
-
-    ![Scope](assets/JS_Scope2.png)
-
-## Lab.
-For the following code enumerate how scope is built and draw a diagram of this scope. *As I have done above*
-
-Work in teams.
-
-Compare the above with another team's deliverable.
-
-```javascript
-
-var autoMake = "Ford";
-var autoModel = "LTD";
-
-function showAuto(year){
-  function autoInfo(){
-    var price = 124;
-    console.log("Auto is a " + year + " " + autoMake + " " + autoModel + ", it's price is " + price + "$");
-  }
-
-  autoInfo();
-};
-
-showAuto(1969);
+```js
+/* A */
+var username = "XxXskaterBoi2004XxX";
+/* B */
+function logIn(){
+    /* C */
+    var session_id = "8675309";
+    /* D */
+    return decrypt(session_id);
+    /* E */
+    function decrypt(string){
+        /* F */
+        var token = profile_id;
+        /* G */
+    }
+    /* H */
+}
+/* I */
+logIn();
+/* J */
+var profile_id = 04011989;
+/* K */
 ```
 
+1. The **value** of the variable `username` is defined on which lines? (That is: on which lines will `console.log`ging it not return `undefined`?)
+    1. A, B, I, J, K
+    - A and B
+    - All lines
+    - All lines except A
+- The **value** of the variable `profile_id` is defined on which lines?
+    2. A, B, I, J, K
+    - K
+    - All lines
+    - All lines except A
+- The variable `profile_id` **itself** is defined on which lines? (That is: on which lines can it be `console.log`ged without throwing an error?)
+    3. A, B, I, J, K
+    - K
+    - All lines
+    - All lines except A
+- The variable `session_id` is defined on which lines?
+    4. C, D, E, F, G, H
+    - C, D, E, H
+    - All lines
+    - All lines except F and G
+- The function `decrypt` is defined on which lines?
+    5. C, D, E, F, G, H
+    - C, D, E, H
+    - All lines
+    - All lines except F and G
 
 ## Sample Quiz Questions
 

@@ -41,3 +41,41 @@ Dip a bottle in the ocean, let the water flow in, close the bottle, then drive o
 When a function is declared it "lets in" all the variables in its scope, and then **closes** itself up -- hence, "closure".
 
 [More in-depth](closures.md)
+
+-----
+
+## Function Declarations and Expressions
+
+#### Function Declaration
+
+```js
+function sayHello(){
+    console.log("Hello!");
+}
+```
+
+#### Function Expression
+
+```js
+var sayHello = function(){
+    console.log("Hello!");
+}
+```
+
+The only difference is that function declarations are "hoisted", and function expressions are not.
+
+## Hoisting
+
+**In real life:** When you "hoist" something, you raise it to the top of something else.
+
+**In Javascript:** Functions and variables declared with `var` are hoisted.
+
+Regardless of where you actually declare them in your code, they behave as if you declared them on the first line of their context.
+
+## Strict Mode
+
+**In real life:** "Strict" means there are rules that must be followed.
+
+**In Javascript:** Strict mode is a way in which your browser interprets Javascript.
+
+Putting `"use strict";` as the first line of a page of code enables Strict Mode, which tells your browser to force you to write "better" code. For example, in strict mode, all variables must be declared with `var`: you cannot omit the `var` to make a global variable.
