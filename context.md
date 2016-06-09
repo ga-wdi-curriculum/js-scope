@@ -17,6 +17,44 @@
 ### For example
 
 ```
+var user = {
+  name: "John",
+  sayName: function(){
+      alert("My name is " + this.name + ".");
+  }
+}
+user.sayName();
+```
+
+What's to the left of the period is `user`, so `this === user`.
+
+#### Events
+
+```html
+<button>Hi there</button>
+```
+
+```js
+$("button").on("click", function(){
+  alert($(this).html());
+});
+```
+
+`this ===` the button, so it alerts "Hi there".
+
+#### Other callback
+
+```js
+var fruits = ["apple", "banana", "cantaloupe"];
+
+fruits.forEach(function(){
+  // `this` is the `Window` object
+});
+```
+
+### Bigger example
+
+```
 /*A*/
 var user = {
     name: "john",

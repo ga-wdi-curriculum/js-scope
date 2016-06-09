@@ -46,8 +46,8 @@ In Javascript, there are two types of scope, **global scope** and **local scope*
 
 There are four simple rules regarding scope in JS:
 
-1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope.
-2. Variables created **with** the `var` keyword are created in the current local scope. **This is bad form.**
+1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope. **This is bad form.**
+2. Variables created **with** the `var` keyword are created in the current local scope.
 3. All functions (and only functions) create a new local scope.
 4. The current scope includes all outer (enclosing) scopes.
 
@@ -92,7 +92,7 @@ The fact that Javascript lets you declare variables without `var` is heavily-cri
 
 So, "Strict Mode" was introduced. When you enable Strict Mode it "converts mistakes into errors": bad habits that would normally be swept under the rug by your browser now throw errors, forcing you to write better code.
 
-To enbale Strict Mode, simply make the first line of your `.js` file `"use strict";`.
+To enable Strict Mode, simply make the first line of your `.js` file `"use strict";`.
 
 For example:
 
