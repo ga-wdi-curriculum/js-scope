@@ -18,7 +18,7 @@
 
 ```
 /*A*/
-var User = {
+var user = {
     name: "john",
     capitalized: function(){
         /*B*/
@@ -30,13 +30,13 @@ var User = {
     }
 }
 
-console.log("Welcome, " + User.capitalized() + "!");
-$("button").on("click", User.sayName);
+console.log("Welcome, " + user.capitalized() + "!");
+$("button").on("click", user.sayName);
 $("input").on("keydown", function(){
     /*D*/
     console.log("Keypress detected for " + this.name);
 });
-User.sayName();
+user.sayName();
 /*E*/
 ```
 
@@ -45,25 +45,25 @@ When the code above is executed...
 1. What is the value of `this` at A?
     1. `Window`
     - `null`
-    - `User`
+    - `user`
     - `$` (jQuery)
 2. What is the value of `this` at B?
     1. `Window`
     - `null`
-    - `User`
+    - `user`
     - `$` (jQuery)
-3. Why does the `User.sayName` in the click event throw an error?
-    1. Because there aren't parentheses after `User.sayName`
-    - Because `User.sayName` is in an event so `this` is not `User`
+3. Why does the `user.sayName` in the click event throw an error?
+    1. Because there aren't parentheses after `user.sayName`
+    - Because `user.sayName` is in an event so `this` is not `user`
     - Because you can't use `alert` inside a function
 4. What is the value of `this` at D?
     1. The `keydown` event
     - `Window`
     - The element that was keyed-down upon
-    - `User`
-5. Why does the `User.sayName()` at the end **not** throw an error?
-    1. Because `User.sayName` is *not* used in an event, so `this` is what was to the left of the period
-    - Because `User` didn't exist until it was created with the click event
+    - `user`
+5. Why does the `user.sayName()` at the end **not** throw an error?
+    1. Because `user.sayName` is *not* used in an event, so `this` is what was to the left of the period
+    - Because `user` didn't exist until it was created with the click event
     - Because I prayed really hard when writing this that it would work
 
 ## What is context
@@ -268,9 +268,27 @@ instructor.displayFoods();
 
 **Mini-exercise**: Use what we know about scope to explain why this works.
 
-### Bind
+## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
 
-Another way is to use the bind method on the function to force the function to always use the specified value as its context.
+## Bonus Exercise: Calculator with 'memory'
+
+## Peek Ahead: OOP Javascript
+
+Often we have multiple pieces of data in our program that share the same structure... think flash cards, trivia cards, bank accounts, etc.
+
+In the future, we'll make these objects using `constructors` (think templates for each type), but then we need a way to talk about the structure in general. Context is a very necessary tool to accomplish this.
+
+An example of what this might look like:
+
+[ATM.js](https://github.com/ga-wdi-exercises/atm/blob/solution/solution/js/src/atm.js)
+[Tunr Song Model](https://github.com/ga-wdi-exercises/tunr_node_oojs/blob/oojs_cud/public/js/models/artist.js)
+## Bonus Content: Bind/Call/Apply
+
+There are two other ways to invoke a function and change the context, which are very similar: `bind`, `call`, and `apply`.
+
+These let you "force" `this` to be something specific.
+
+### Bind
 
 ```js
 var instructor = {
@@ -286,25 +304,9 @@ var instructor = {
 instructor.displayFoods();
 ```
 
-## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
+[More information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
-## Bonus Exercise: Calculator with 'memory'
-
-## Peek Ahead: OOP Javascript
-
-Often we have multiple pieces of data in our program that share the same structure... think flash cards, trivia cards, bank accounts, etc.
-
-In the future, we'll make these objects using `constructors` (think templates for each type), but then we need a way to talk about the structure in general. Context is a very necessary tool to accomplish this.
-
-An example of what this might look like:
-
-[ATM.js](https://github.com/ga-wdi-exercises/atm/blob/solution/solution/js/src/atm.js)
-[Tunr Song Model](https://github.com/ga-wdi-exercises/tunr_node_oojs/blob/oojs_cud/public/js/models/artist.js)
-## Bonus Content: Call/Apply
-
-There are two other ways to invoke a function and change the context, which are very similar: `call` and `apply`.
-
-Here's an example of how to use call:
+### Call
 
 ```js
 function sayHello() {
@@ -330,24 +332,28 @@ sayHello.call(person, "blue");
 sayHello.call(cat, "peachpuff");
 ```
 
+[More information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+
+### Apply
+
 `apply` works almost exactly like `call`, only you pass in *array* of arguments instead of a comma-separated list.
 
 `apply` is useful when the number of arguments to pass to the function is unknown and/or arbitrary.
 
-See the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply) for more.
+[More information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
 ## Summary
 
 Note that #1 is included here for correctness, we haven't covered object constructors yet, but will soon.
 
 > 1. Is the function called with `new` (**new binding**)? If so, `this` is the newly constructed object.
->     `var supreme_pizza = new Pizza()`
+>     `var supremePizza = new Pizza()`
 > 2. Is the function called with `call` or `apply` (**explicit binding**), even hidden inside a `bind` *hard binding*? If so, `this` is the explicitly specified object.
->     `var baked_pizza = bake.call( raw_pizza )`
+>     `var bakedPizza = bake.call( rawPizza )`
 > 3. Is the function called with a context (**implicit binding**), otherwise known as an owning or containing object? If so, `this` is *that* context object.
->     `var baked_pizza = raw_pizza.bake()`
+>     `var bakedPizza = rawPizza.bake()`
 > 4. Otherwise, default the `this` (**default binding**). If in `strict mode`, pick `undefined`, otherwise pick the `global` object.
->     `var probably_wont_work = bake()`
+>     `var probablyWontWork = bake()`
 >
 > Source: [You-Dont-Know-JS/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/58dbf4f867be0d9c51dfc341765e4e4211608aa1/this%20&%20object%20prototypes/ch2.md)
 

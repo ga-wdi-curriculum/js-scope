@@ -188,13 +188,13 @@ var username = "XxXskaterBoi2004XxX";
 /* B */
 function logIn(){
     /* C */
-    var session_id = "8675309";
+    var sessionID = "8675309";
     /* D */
-    return decrypt(session_id);
+    return decrypt(sessionID);
     /* E */
     function decrypt(string){
         /* F */
-        var token = profile_id;
+        var token = profileID;
         /* G */
     }
     /* H */
@@ -202,7 +202,7 @@ function logIn(){
 /* I */
 logIn();
 /* J */
-var profile_id = 04011989;
+var profileID = 04011989;
 /* K */
 ```
 
@@ -211,17 +211,17 @@ var profile_id = 04011989;
     - A and B
     - All lines
     - All lines except A
-- The **value** of the variable `profile_id` is defined on which lines?
+- The **value** of the variable `profileID` is defined on which lines?
     2. A, B, I, J, K
     - K
     - All lines
     - All lines except A
-- The variable `profile_id` **itself** is defined on which lines? (That is: on which lines can it be `console.log`ged without throwing an error?)
+- The variable `profileID` **itself** is defined on which lines? (That is: on which lines can it be `console.log`ged without throwing an error?)
     3. A, B, I, J, K
     - K
     - All lines
     - All lines except A
-- The variable `session_id` is defined on which lines?
+- The variable `sessionID` is defined on which lines?
     4. C, D, E, F, G, H
     - C, D, E, H
     - All lines
