@@ -14,6 +14,17 @@ A variable's *scope* refers to the parts of the code from which the variable can
 
 "If I define a variable in this part of my code, can I use it in that other part of the code?"
 
+```js
+var variableA = 1;
+// I CANNOT access variableB here
+function myFunction(){
+  var variableB = 2;
+  // I can access variableA here
+}
+// I can access variableA here
+// I CANNOT access variableB here
+```
+
 [More in-depth](scope.md)
 
 ## Context
@@ -25,6 +36,16 @@ A variable's *scope* refers to the parts of the code from which the variable can
 This is because *every line of code in Javascript is run inside an object.* "Context" refers to the object inside which the line of code is being run.
 
 The `this` variable refers to the object inside which the line of code is being run.
+
+```
+var user = {
+  name: "Steve",
+  sayHello: function(){
+    console.log("My name is " + this.name);
+  }
+}
+user.sayHello();
+```
 
 [More in-depth](context.md)
 
@@ -39,6 +60,19 @@ Regardless of where you *call* a function, it will always have access to the sam
 Dip a bottle in the ocean, let the water flow in, close the bottle, then drive over to a freshwater lake and -- leaving it sealed -- drop the bottle in the lake. Even though the water outside the bottle has changed, the water inside the bottle is still the same.
 
 When a function is declared it "lets in" all the variables in its scope, and then **closes** itself up -- hence, "closure".
+
+```js
+var name = "Steve";
+function sayHello(){
+  alert("Hi there, " + name + "!");
+}
+
+$(document).ready(function(){
+  var name = "Moe";
+  sayHello();
+  // "Hi there, Steve!"
+});
+```
 
 [More in-depth](closures.md)
 
@@ -72,6 +106,15 @@ The only difference is that function declarations are "hoisted", and function ex
 
 Regardless of where you actually declare them in your code, they behave as if you declared them on the first line of their context.
 
+```js
+sayHello();
+// "Hello, world!"
+
+function sayHello(){
+  alert("Hello, world!");
+}
+```
+
 ## Strict Mode
 
 **In real life:** "Strict" means there are rules that must be followed.
@@ -79,3 +122,15 @@ Regardless of where you actually declare them in your code, they behave as if yo
 **In Javascript:** Strict mode is a way in which your browser interprets Javascript.
 
 Putting `"use strict";` as the first line of a page of code enables Strict Mode, which tells your browser to force you to write "better" code. For example, in strict mode, all variables must be declared with `var`: you cannot omit the `var` to make a global variable.
+
+```js
+name = "Steve";
+// No error
+```
+
+```js
+"use strict";
+
+name = "Steve";
+// Uncaught ReferenceError: name is not defined
+```
