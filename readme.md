@@ -311,7 +311,7 @@ var user = createUser("john");
   - `"john"`
   - `"John"`
   - `"Hi! I'm John!"`
-- What would be the result of `createUser("steve").sayHello()` at `B`?
+- What would be the result of `createUser("steve").greet()` at `B`?
   1. `undefined` or an error
   - `user`
   - `"steve"`
@@ -325,7 +325,7 @@ var user = createUser("john");
   <summary>When you've finished...</summary>
   <ol>
     <li>`"John"`</li>
-    <li>`"Hi! I'm John!"`</li>
+    <li>`undefined` or an error, because `sayHello` has been attached to a property called `greet`.</li>
     <li>`undefined` or an error. In order for `sayBye` to be available outside the `user` object's scope, it needs to be `return`ed like `sayHello`.</li>
     <li>`undefined` or an error. `capitalize` is not attached to the `user`.</li>
     <li>`"Hi! I'm John!"`</li>
