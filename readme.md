@@ -16,16 +16,16 @@ A variable's *scope* refers to the parts of the code from which the variable can
 
 ```js
 var variableA = 1;
+// I can access variableA here
 // I CANNOT access variableB here
 function myFunction(){
   var variableB = 2;
   // I can access variableA here
+  // I can access variableB here
 }
 // I can access variableA here
 // I CANNOT access variableB here
 ```
-
-[More in-depth](scope.md)
 
 ### Function Declarations and Expressions
 
@@ -83,6 +83,9 @@ name = "Steve";
 name = "Steve";
 // Uncaught ReferenceError: name is not defined
 ```
+
+### [More in-depth](scope.md)
+
 
 ### Review
 
@@ -168,7 +171,7 @@ var user = {
 user.sayHello();
 ```
 
-[More in-depth](context.md)
+### [More in-depth](context.md)
 
 ### Review
 
@@ -258,7 +261,7 @@ $(document).ready(function(){
 });
 ```
 
-[More in-depth](closures.md)
+### [More in-depth](closures.md)
 
 ### Review
 
