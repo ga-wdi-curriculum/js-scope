@@ -161,7 +161,7 @@ This is because *every line of code in Javascript is run inside an object.* "Con
 
 The `this` variable refers to the object inside which the line of code is being run.
 
-```
+```js
 var user = {
   name: "Steve",
   sayHello: function(){
@@ -175,7 +175,7 @@ user.sayHello();
 
 ### Review
 
-```
+```js
 /*A*/
 var user = {
     name: "john",
