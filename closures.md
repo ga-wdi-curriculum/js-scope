@@ -7,7 +7,7 @@
 - Write a function that uses a closure to control access to data
 - Explain why and from what we are trying to protect data
 
-## What are Closures
+## What are Closures?
 
 Closure is the property of function such that it can access variables in the same scope, i.e. scope chain, it was declared in. Even when that function is operating outside of that scope.
 

@@ -78,6 +78,8 @@ user.sayName();
 /*E*/
 ```
 
+### Matching
+
 When the code above is executed...
 
 1. What is the value of `this` at A?
@@ -90,7 +92,7 @@ When the code above is executed...
     - `null`
     - `user`
     - `$` (jQuery)
-3. Why does the `user.sayName` in the click event throw an error?
+3. Why does the click event throw an error?
     1. Because there aren't parentheses after `user.sayName`
     - Because `user.sayName` is in an event so `this` is not `user`
     - Because you can't use `alert` inside a function
@@ -100,9 +102,20 @@ When the code above is executed...
     - The element that was keyed-down upon
     - `user`
 5. Why does the `user.sayName()` at the end **not** throw an error?
-    1. Because `user.sayName` is *not* used in an event, so `this` is what was to the left of the period
+    1. Because `this` is `user`: what was to the left of the period
     - Because `user` didn't exist until it was created with the click event
     - Because I prayed really hard when writing this that it would work
+
+<details>
+  <summary>When you've finished...</summary>
+  <ol>
+    <li>`Window`</li>
+    <li>`user`</li>
+    <li>Because `user.sayName` is in an event so `this` is not `user`. In an event listener `this` is always the HTML element that triggered the event.</li>
+    <li>The element that was keyed-down upon</li>
+    <li>Because `this` is `user`: what was to the left of the period</li>
+  </ol>
+</details>
 
 ## What is context
 

@@ -206,31 +206,42 @@ var profileID = 04011989;
 /* K */
 ```
 
-1. The **value** of the variable `username` is defined on which lines? (That is: on which lines will `console.log`ging it not return `undefined`?)
+1. The variable `username` **has a value** on which lines? (That is: on which lines will `console.log`ging it not return `undefined`?)
     1. A, B, I, J, K
     - A and B
     - All lines
     - All lines except A
-- The **value** of the variable `profileID` is defined on which lines?
+- The variable `profileID` **has a value** on which lines?
     2. A, B, I, J, K
     - K
     - All lines
     - All lines except A
-- The variable `profileID` **itself** is defined on which lines? (That is: on which lines can it be `console.log`ged without throwing an error?)
+- The variable `profileID` **is accessible** on which lines? (That is: on which lines can it be `console.log`ged without throwing an error?)
     3. A, B, I, J, K
     - K
     - All lines
     - All lines except A
-- The variable `sessionID` is defined on which lines?
+- The variable `sessionID` **is accessible** on which lines?
     4. C, D, E, F, G, H
     - C, D, E, H
     - All lines
     - All lines except F and G
-- The function `decrypt` is defined on which lines?
+- The function `decrypt` **is accessible** on which lines?
     5. C, D, E, F, G, H
     - C, D, E, H
     - All lines
     - All lines except F and G
+
+<details>
+  <summary>When you've finished...</summary>
+  <ol>
+    <li>All lines except A. The variable is available on all lines due to hoisting, but it only has a value after `username =`.</li>
+    <li>K. The variable is available on all lines due to hoisting, but it only has a value after `profileID =`.</li>
+    <li>All lines.</li>
+    <li>C, D, E, F, G, H</li>
+    <li>C, D, E, F, G, H</li>
+  </ol>
+</details>
 
 ## Sample Quiz Questions
 
