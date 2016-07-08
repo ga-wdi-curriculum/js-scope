@@ -14,6 +14,12 @@
 - You're in an event listener function, in which case `this` is the thing that was clicked on
 - You're in another callback function, in which case `this` is probably the `Window`
 
+And, if you're ever unsure what `this` is at a given point in your code.
+
+```js
+console.log(this)
+```
+
 ### For example
 
 ```
