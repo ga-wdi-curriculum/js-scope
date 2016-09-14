@@ -12,7 +12,7 @@
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
 
-## What is Context?
+## What is Context? (20 minutes / 1:35)
 
 In Javascript, context tells us where functions are invoked.
 
@@ -150,7 +150,7 @@ xwing.setPilot("Luke Skywalker"); // "Yoda, we have got a new pilot!"
 xwing.pilot //  >> "Luke Skywalker"
 ```
 
-## Other `this` Cases
+## Other `this` Cases (10 minutes / 1:45)
 
 ### Events
 
@@ -170,6 +170,18 @@ $("button").on("click", function(){
   > `this ===` the button, so it alerts "Hi there".
 
 </details>
+
+### Default Context
+
+When a function is called, but it's not a method on an object, and no context is otherwise assigned (see later sections), then the context is set to the default context. In a browser, the default context is the `window` object.
+
+```js
+function revealThis() {
+  console.log(this);
+}
+
+revealThis();
+```
 
 ### Non-Event Callbacks
 
@@ -197,18 +209,6 @@ fruits.forEach(function(currentFruit) {
 });
 ```
 
-### Default Context
-
-When a function is called, but it's not a method on an object, and no context is otherwise assigned (see later sections), then the context is set to the default context. In a browser, the default context is the `window` object.
-
-```js
-function revealThis() {
-  console.log(this);
-}
-
-revealThis();
-```
-
 Note that it is very rare to intentionally use `this` to refer to the window object. Usually this happens when we mistakenly use this incorrectly (a very easy/common mistake for new and even experienced JS developers).
 
 ## You Do: Write, Pair, Share (5 minutes)
@@ -232,7 +232,7 @@ var instructor = {
 instructor.displayFoods();
 ```
 
-Using what we know about forEach... what do we expect the output to be?
+Using what we know about forEach, what do we expect the output to be?
 
 Now what about this *slightly* modified example...
 
@@ -263,7 +263,7 @@ Note that this issue frequently appears anytime we use a callback / anonymous fu
 * using `forEach()` or other iteration functions
 * for event listeners passed into `someElement.addEventListener()`
 
-## Fixes for the global `this` gotcha
+## Fixes for the Global `this` Gotcha
 
 ### Store `this` in another variable
 
@@ -356,9 +356,9 @@ When the code above is executed...
 
 ## Peek Ahead: OOP Javascript
 
-Often we have multiple pieces of data in our program that share the same structure... think flash cards, trivia cards, bank accounts, etc.
+Often we have multiple pieces of data in our program that share the same structure. Think flash cards, trivia cards, bank accounts, etc.
 
-In the future, we'll make these objects using `constructors` (think templates for each type), but then we need a way to talk about the structure in general. Context is a very necessary tool to accomplish this.
+In the future, we'll make these objects using "constructors" (think templates for each type), but then we need a way to talk about the structure in general. Context is a very necessary tool to accomplish this.
 
 An example of what this might look like:
 
@@ -367,7 +367,7 @@ An example of what this might look like:
 
 -------
 
-## Bind/Call/Apply (Bonus)
+## Bind, Call and Apply (Bonus)
 
 There are two other ways to invoke a function and change the context, which are very similar: `bind`, `call`, and `apply`.
 

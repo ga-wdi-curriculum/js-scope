@@ -1,7 +1,3 @@
-# TO DO
-* Insert notes on why global variables are not a good thing.
-* Has hoisting been covered previously?
-
 # Scope
 
 ## Learning Objectives
@@ -133,6 +129,8 @@ fruit = "banana";
 
 ### You Do: An Even More Complex Example (20 minutes / 0:50)
 
+> 15 minutes exercise. 5 minutes review.
+
 In pairs, follow the same process we did in the "We Do" earlier.
   1. Identify and diagram the scope of each variable.  
   2. Determine whether each `console.log` will error out or not.
@@ -164,7 +162,11 @@ function removeYears(){
 };
 ```
 
-## You Do: Test Your Scope Knowledge
+## You Do: Test Your Scope Knowledge (15 minutes / 1:05)
+
+> 10 minutes exercise. 5 minutes review.
+
+Answer the questions below the following code snippet. The letters in the questions and answer choices reference lines in the snippet.
 
 ```js
 /* A */
@@ -190,7 +192,7 @@ var profileID = 04011989;
 /* K */
 ```
 
-1. The variable `username` **has a value** on which lines? (That is: on which lines will `console.log`ging it not return `undefined`?)
+1. The variable `username` **has a value** on which lines? (That is: on which lines will `console.log`ing it not return `undefined`?)
     1. A, B, I, J, K
     - A and B
     - All lines
@@ -230,7 +232,7 @@ var profileID = 04011989;
 
 </details>
 
-## Break (10 minutes)
+## Break (10 minutes / 1:15)
 
 -------
 
