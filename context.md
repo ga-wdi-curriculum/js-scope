@@ -12,7 +12,7 @@
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
 
-## What is Context? (20 minutes / 1:35)
+## What is Context? (20 minutes / 1:30)
 
 In Javascript, context tells us where functions are invoked.
 
@@ -150,7 +150,7 @@ xwing.setPilot("Luke Skywalker"); // "Yoda, we have got a new pilot!"
 xwing.pilot //  >> "Luke Skywalker"
 ```
 
-## Other `this` Cases (10 minutes / 1:45)
+## Other `this` Cases (10 minutes / 1:40)
 
 ### Events
 
@@ -211,7 +211,7 @@ fruits.forEach(function(currentFruit) {
 
 Note that it is very rare to intentionally use `this` to refer to the window object. Usually this happens when we mistakenly use this incorrectly (a very easy/common mistake for new and even experienced JS developers).
 
-## You Do: Write, Pair, Share (5 minutes)
+## You Do: Write, Pair, Share (5 minutes / 1:45)
 
 Consider the following example...
 
@@ -263,9 +263,7 @@ Note that this issue frequently appears anytime we use a callback / anonymous fu
 * using `forEach()` or other iteration functions
 * for event listeners passed into `someElement.addEventListener()`
 
-## Fixes for the Global `this` Gotcha
-
-### Store `this` in another variable
+## Fixing the Global `this` Gotcha (5 minutes / 1:50)
 
 One trick is to store the `this` you want in another variable, commonly named `self` or `that`.
 
@@ -288,7 +286,11 @@ instructor.displayFoods();
 
 Use what we know about scope to explain why this works.
 
-## You Do: Test Your Context Knowledge
+<!-- AM: Is there a more valuable exercise that can be used here? -->
+
+## You Do: Test Your Context Knowledge (15 minutes / 2:05)
+
+> 10 minutes exercise. 5 minutes review.
 
 ```js
 /*A*/

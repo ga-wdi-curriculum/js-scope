@@ -127,9 +127,9 @@ fruit = "banana";
 // Uncaught ReferenceError: fruit is not defined
 ```
 
-### You Do: An Even More Complex Example (20 minutes / 0:50)
+### You Do: An Even More Complex Example (15 minutes / 0:45)
 
-> 15 minutes exercise. 5 minutes review.
+> 10 minutes exercise. 5 minutes review.
 
 In pairs, follow the same process we did in the "We Do" earlier.
   1. Identify and diagram the scope of each variable.  
@@ -162,7 +162,7 @@ function removeYears(){
 };
 ```
 
-## You Do: Test Your Scope Knowledge (15 minutes / 1:05)
+## You Do: Test Your Scope Knowledge (15 minutes / 1:00)
 
 > 10 minutes exercise. 5 minutes review.
 
@@ -232,7 +232,7 @@ var profileID = 04011989;
 
 </details>
 
-## Break (10 minutes / 1:15)
+## Break (10 minutes / 1:10)
 
 -------
 
