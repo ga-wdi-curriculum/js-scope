@@ -1,7 +1,3 @@
-# TO DO
-* Why does `this` === `Window` in a non-event callback
-* What is the purpose of the Cat Surprise exercise?
-
 # Context
 
 ## Learning Objectives
@@ -189,7 +185,7 @@ revealThis();
 var fruits = ["apple", "banana", "cantaloupe"];
 
 fruits.forEach(function(){
-  // `this` is the `Window` object
+  // this === the `Window` object
 });
 ```
 

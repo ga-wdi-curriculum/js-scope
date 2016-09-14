@@ -6,7 +6,6 @@
 - Describe the rules of scope in Javascript
 - Give an example of a function declaration and a function expression
 - Describe the impact of hoisting on variable scope
-- Describe the purpose of `use strict`
 
 ## Why Scope? Why Now?
 
@@ -58,6 +57,8 @@ There are four simple rules regarding scope in JS...
 
 > One consequence of rule 3 is that variables defined outside of any function are inherently global, even if the `var` keyword is used.
 
+![scope diagram](http://www.datchley.name/content/images/2015/08/js-es5-scope-2.png)
+
 Another way to say this...
 
 * **Local variables** defined inside a function cannot be accessed from anywhere outside the function, because the variable is defined only in the scope of the function.
@@ -104,28 +105,6 @@ console.dir(window); // Which of the variables are accessible in here?
   > `batterName` = local to `playBaseball`  
 
 </details>
-
-### Strict Mode
-
-The fact that Javascript lets you declare variables without `var` is heavily-criticized: it can make for some pretty gnarly code.
-
-So, "Strict Mode" was introduced. When you enable Strict Mode, it "converts mistakes into errors," Bad habits that would normally be swept under the rug by your browser now throw errors, forcing you to write better code.
-
-To enable Strict Mode, simply make the first line of your `.js` file `"use strict";`...
-
-```js
-fruit = "banana";
-
-// ...
-```
-
-```js
-"use strict";
-
-fruit = "banana";
-
-// Uncaught ReferenceError: fruit is not defined
-```
 
 ### You Do: An Even More Complex Example (15 minutes / 0:45)
 
