@@ -1,12 +1,13 @@
 # TO DO
 * Why does `this` === `Window` in a non-event callback
+* What is the purpose of the Cat Surprise exercise?
 
 # Context
 
 ## Learning Objectives
 
 - Explain Javascript 'context' and what the value of the 'this' keyword refers to
-- Explain what the default context of Javascript executing in the browser is.
+- Explain what the default context of Javascript executing in the browser is
 - Use the 'this' keyword to set and retrieve a property in a Javascript function
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
@@ -286,6 +287,72 @@ instructor.displayFoods();
 ## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
 
 Use what we know about scope to explain why this works.
+
+## You Do: Test Your Context Knowledge
+
+```js
+/*A*/
+var user = {
+    name: "john",
+    capitalized: function(){
+        /*B*/
+        return this.name.substring(0,1).toUpperCase() + this.name.substring(1);
+    },
+    sayName: function(){
+        /*C*/
+        alert("My name is " + this.capitalized() + ".");
+    }
+}
+
+console.log("Welcome, " + user.capitalized() + "!");
+$("button").on("click", user.sayName);
+$("input").on("keydown", function(){
+    /*D*/
+    console.log("Keypress detected for " + this.name);
+});
+user.sayName();
+/*E*/
+```
+
+When the code above is executed...
+
+1. What is the value of `this` at A?
+    1. `Window`
+    - `null`
+    - `user`
+    - `$` (jQuery)
+2. What is the value of `this` at B?
+    1. `Window`
+    - `null`
+    - `user`
+    - `$` (jQuery)
+3. Why does the click event throw an error?
+    1. Because there aren't parentheses after `user.sayName`
+    - Because `user.sayName` is in an event so `this` is not `user`
+    - Because you can't use `alert` inside a function
+4. What is the value of `this` at D?
+    1. The `keydown` event
+    - `Window`
+    - The element that was keyed-down upon
+    - `user`
+5. Why does the `user.sayName()` at the end **not** throw an error?
+    1. Because `this` is `user`: what was to the left of the period
+    - Because `user` didn't exist until it was created with the click event
+    - Because I prayed really hard when writing this that it would work
+
+<details>
+
+  <summary><strong>When you've finished...</strong></summary>
+
+  <ol>
+    <li>`Window`</li>
+    <li>`user`</li>
+    <li>Because `user.sayName` is in an event so `this` is not `user`. In an event listener `this` is always the HTML element that triggered the event.</li>
+    <li>The element that was keyed-down upon</li>
+    <li>Because `this` is `user`: what was to the left of the period</li>
+  </ol>
+
+</details>
 
 ## Peek Ahead: OOP Javascript
 

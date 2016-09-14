@@ -9,24 +9,25 @@
 
 ## What are Closures?
 
-Closure is the property of function such that it can access variables in the same scope, i.e. scope chain, it was declared in. Even when that function is operating outside of that scope.
+**In real life:** "Closure" is the process of closing something and sealing it up, like a box or a container.
 
-A function is called a "closure" because it "closes around" some variables and functions. It's like an envelope containing variables and functions. When you send that envelope around, it still contains all the same variables and functions.
+Dip a bottle in the ocean, let the water flow in, close the bottle, then drive over to a freshwater lake and -- leaving it sealed -- drop the bottle in the lake. Even though the water outside the bottle has changed, the water inside the bottle is still the same.
 
-All functions in JS are closures. Effectively, this means:
+**In Javascript:** Functions have closure.
 
-1. We can pass functions around by putting them in variables or referencing them by name.
-2. Functions can be passed in as arguments to other functions.
-3. Functions can return other functions.
-4. No matter how they are passed around, a function 'remembers' the variables in scope at the time of it's definition.
+Closure is the property of a function such that it can access variables in the same scope it was declared in.
 
-### Exercise: Turn & Talk
+Regardless of where you *call* a function, it will always have access to the same variables and other functions it did when you first *declared* it.
 
-Where have we seen examples of 1-3 (even possibly 4) in practice already?
+All functions in Javascript are closures. This has four key implications...
+  1. We can pass functions around by putting them in variables or referencing them by name.  
+  2. Functions can be passed in as arguments to other functions.  
+  3. Functions can return other functions.  
+  4. No matter how they are passed around, a function 'remembers' the variables in scope at the time of it's definition.  
 
 ## Storing Functions
 
-We've already seen that we can store functions in variables:
+We've already seen that we can store functions in variables...
 
 ```js
 var sayHello = function() {
@@ -38,7 +39,7 @@ sayHello();
 
 ## Passing Functions as Arguments
 
-We've already seen passing functions as arguments in the case of event listeners:
+We've already seen that we can use functions as arguments. Consider this event listener...
 
 ```js
 function alertUser() {
@@ -70,20 +71,20 @@ function sayHelloGenerator(){
 
 var sayHey = sayHelloGenerator();
 
-// "Hello Bart"
 var msg = sayHey("Bart");
 console.log(msg);
+// "Hello Bart"
 ```
 
-#### Exercise:
+#### You Do: Scope Diagram
 
-1. Write the scope diagram for the code above, and describe what happens as it runs step by step.
+Write the scope diagram for the code above, and describe what happens as it runs step by step.
 
-## Another (More Complex) Example
+## A More Complex Example
 
-The key to understanding closure is to know that a function declared in a scope can **ALWAYS** access other variables in that scope.
+The key to understanding closure is to know that a function declared in a scope can always access other variables in that scope.
 
-**Even when that function is executing outside of the declaring function**
+This is true even when that function is executing outside of the declaring function. For example...
 
 ```js
 function makeAdder(x) {
@@ -95,11 +96,11 @@ function makeAdder(x) {
 var add5 = makeAdder(5);
 var add10 = makeAdder(10);
 
-console.log(  add5(2) );  // 7
-console.log(  add10(2) ); // 12
+console.log(add5(2));  // 7
+console.log(add10(2)); // 12
 ```
 
-## Encapsulation.
+## Encapsulation
 
 Encapsulation is a software concept where one separates the implementation from the interface that is used by clients.
 
@@ -166,6 +167,76 @@ Note, the interface to the object 'bob' is two functions/methods, getName and ge
 The implementation are the private variables `name`, `age` and the code inside the getName and getAge functions.
 
 Client code does **NOT** need to be concerned with implementation details. Only with the interface.
+
+## Test Your Closure Knowledge
+
+```js
+function createUser(name){
+  /* A */
+  name = capitalize(name);
+  function sayHello(){
+    alert("Hi! I'm " + name + "!");
+  }
+  function sayBye(){
+    alert("Hasta luego, Winnebago!");
+  }
+  return {
+    name: name,
+    greet: sayHello
+  }
+}
+function capitalize(string){
+  return string.substring(0,1).toUpperCase() + string.substring(1);
+}
+var user = createUser("john");
+/* B */
+```
+
+1. What is the value of `user.name` at `B`?
+  1. `undefined` or an error
+  - `user`
+  - `"john"`
+  - `"John"`
+  - `"Hi! I'm John!"`
+- What would be the result of `user.sayHello()` at `B`?
+  1. `undefined` or an error
+  - `user`
+  - `"john"`
+  - `"John"`
+  - `"Hi! I'm John!"`
+- What would be the result of `user.sayBye()` at `B`?
+  1. `undefined` or an error
+  - `user`
+  - `"john"`
+  - `"John"`
+  - `"Hi! I'm John!"`
+- What would be the result of `user.capitalize('john')` at `B`?
+  1. `undefined` or an error
+  - `user`
+  - `"john"`
+  - `"John"`
+  - `"Hi! I'm John!"`
+- What would be the result of `createUser("steve").greet()` at `B`?
+  1. `undefined` or an error
+  - `user`
+  - `"steve"`
+  - `"Steve"`
+  - `"Hi! I'm Steve!"`
+- What is the value of `this` at `A`?
+  1. `Window`
+  - `user`
+
+<details>
+  <summary>When you've finished...</summary>
+  <ol>
+    <li>`"John"`</li>
+    <li>`undefined` or an error, because `sayHello` has been attached to a property called `greet`.</li>
+    <li>`undefined` or an error. In order for `sayBye` to be available outside the `user` object's scope, it needs to be `return`ed like `sayHello`.</li>
+    <li>`undefined` or an error. `capitalize` is not attached to the `user`.</li>
+    <li>`"Hi! I'm John!"`</li>
+    <li>`Window`, because there is nothing *to the left of the period* -- nor any period at all -- when `createUser` is called.</li>
+  </ol>
+</details>
 
 ## References
 

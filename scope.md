@@ -1,15 +1,16 @@
 # TO DO
 * Insert notes on why global variables are not a good thing.
+* Has hoisting been covered previously?
 
 # Scope
 
 ## Learning Objectives
 
-- Define 'scope' in the context of programming.
-- Describe the rules of scope in Javascript.
-- Give an example of a function declaration and a function expression.
-- Describe the impact of hoisting on variable scope.
-- Describe the purpose of `use strict`.
+- Define 'scope' in the context of programming
+- Describe the rules of scope in Javascript
+- Give an example of a function declaration and a function expression
+- Describe the impact of hoisting on variable scope
+- Describe the purpose of `use strict`
 
 ## Why Scope? Why Now?
 
@@ -163,7 +164,7 @@ function removeYears(){
 };
 ```
 
-## You Do: An Optional Exercise
+## You Do: Test Your Scope Knowledge
 
 ```js
 /* A */
