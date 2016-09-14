@@ -89,7 +89,6 @@ name = "Steve";
 
 ### Review
 
-
 ```js
 /* A */
 var username = "XxXskaterBoi2004XxX";
