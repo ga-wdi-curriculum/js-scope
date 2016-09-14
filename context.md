@@ -1,3 +1,6 @@
+# TO DO
+* Why does `this` === `Window` in a non-event callback
+
 # Context
 
 ## Learning Objectives
@@ -8,61 +11,11 @@
 - Use bind to create a new method bound to an object context
 - Use apply/call to execute a method in a different context
 
-## TLDR:
+## What is Context?
 
-`this` is whatever was to the **left of the period** when it was called, unless:
-- You're in an event listener function, in which case `this` is the thing that was clicked on
-- You're in another callback function, in which case `this` is probably the `Window`
+In Javascript, context tells us where functions are invoked.
 
-And, if you're ever unsure what `this` is at a given point in your code.
-
-```js
-console.log(this)
-```
-
-### For example
-
-```
-var user = {
-  name: "John",
-  sayName: function(){
-      alert("My name is " + this.name + ".");
-  }
-}
-user.sayName();
-```
-
-What's to the left of the period is `user`, so `this === user`.
-
-#### Events
-
-```html
-<button>Hi there</button>
-```
-
-```js
-$("button").on("click", function(){
-  alert($(this).html());
-});
-```
-
-`this ===` the button, so it alerts "Hi there".
-
-#### Other callback
-
-```js
-var fruits = ["apple", "banana", "cantaloupe"];
-
-fruits.forEach(function(){
-  // `this` is the `Window` object
-});
-```
-
-## What is context
-
-Context is feature of the Javascript language related to how and when/where functions are invoked (aka called).
-
-In short, the context is the object that a function is 'attached' to. (Though we'll see that context can change under certain circumstances).
+In short, the context is the object that a function is attached to. We'll see that context can change under certain circumstances).
 
 Every time a Javascript function is called, a context is determined / set. That context is always an object, and can be referenced in the function definition (code) using a special keyword in JS, `this`.
 
@@ -78,12 +31,43 @@ We could have written this:
 “John is running fast because John is trying to catch the train.”
 ```
 
-In a similar manner, in JavaScript, we use the `this` keyword as a shortcut, a referent; it refers to an object. The subject in context or the subject of the executing code.
+In a similar manner, we use the `this` keyword as a replacement for the subject in question.
 
-Here's an example of the most common way context is determined for a function: when a method is called on an object, that object becomes the context:
+### `this` in an Object
 
+Here's an example of the most common way context is determined for a function. When a method is called on an object, that object becomes the context...
+
+```js
+var user = {
+  name: "John",
+  sayName: function(){
+      alert("My name is " + this.name + ".");
+  }
+}
+user.sayName();
+```
+
+<details>
+  <summary><strong>What does <code>this</code> represent here?</strong></summary>
+
+  > What's to the left of the period when `sayName` is called is `user`. So, `this === user`.
+
+</details>
+
+### A Rule of Thumb
+
+In general, `this` is whatever was to the **left of the period** when it was called, unless...
+- You're in an event listener function, in which case `this` is the thing that was clicked on.
+- You're in another callback function, in which case `this` is probably the `Window`.
+
+If you're ever unsure what `this` is at a given point in your code.
+
+```js
+console.log(this)
+```
 
 ### 'Getting' Properties using `this`
+
 ```js
 var instructor = {
   name: "Adam Bray",
@@ -165,25 +149,40 @@ xwing.setPilot("Luke Skywalker"); // "Yoda, we have got a new pilot!"
 xwing.pilot //  >> "Luke Skywalker"
 ```
 
-## Default Context
+## Other `this` Cases
 
-When a function is called, but it's not a method on an object, and no context is otherwise assigned (see later sections), then the context is set to the default context. In a browser, the default context is the `window` object.
+### Events
 
-In node.js, the default object is called the global object.
-
-```js
-function revealThis() {
-  console.log(this);
-}
-
-revealThis();
+```html
+<button>Hi there</button>
 ```
 
-Note that it is very rare to intentionally use `this` to refer to the window object. Usually this happens when we mistakenly use this incorrectly (a very easy/common mistake for new and even experienced JS developers).
+```js
+$("button").on("click", function(){
+  alert($(this).html());
+});
+```
 
-## Gotcha With `this`
+<details>
+  <summary><strong>What does <code>this</code> represent here?</strong></summary>
 
-### Aside: forEach!
+  > `this ===` the button, so it alerts "Hi there".
+
+</details>
+
+### Non-Event Callbacks
+
+```js
+var fruits = ["apple", "banana", "cantaloupe"];
+
+fruits.forEach(function(){
+  // `this` is the `Window` object
+});
+```
+
+#### Aside: `forEach`
+
+`forEach` is a Javascript method used to iterate through a collection and do something with each item in it.
 
 ```js
 var fruits = ["apples", "bananas", "cherries"];
@@ -197,9 +196,23 @@ fruits.forEach(function(currentFruit) {
 });
 ```
 
-### Exercise - Write, Pair, Share (5 minutes)
+### Default Context
 
-Consider the following example:
+When a function is called, but it's not a method on an object, and no context is otherwise assigned (see later sections), then the context is set to the default context. In a browser, the default context is the `window` object.
+
+```js
+function revealThis() {
+  console.log(this);
+}
+
+revealThis();
+```
+
+Note that it is very rare to intentionally use `this` to refer to the window object. Usually this happens when we mistakenly use this incorrectly (a very easy/common mistake for new and even experienced JS developers).
+
+## You Do: Write, Pair, Share (5 minutes)
+
+Consider the following example...
 
 ```js
 var instructor = {
@@ -220,8 +233,7 @@ instructor.displayFoods();
 
 Using what we know about forEach... what do we expect the output to be?
 
-
-Now what about this *slightly* modified example:
+Now what about this *slightly* modified example...
 
 ```js
 var instructor = {
@@ -241,12 +253,11 @@ instructor.displayFoods();
 
 ### Answer
 
-In the first case, `this` behaves like we would expect, (it references `instructor` since it's inside a function attached to an `instructor`.
+In the first case, `this` behaves like we would expect. It references `instructor` since it's inside a function attached to an `instructor`.
 
 In the second case, `this` is inside an anonymous function, so it refers to the global object.
 
-Note that this issue frequently appears anytime we use a callback / anonymous function, such as:
-
+Note that this issue frequently appears anytime we use a callback / anonymous function, such as...
 * using `setTimeout()` or `setInterval()` to schedule callbacks
 * using `forEach()` or other iteration functions
 * for event listeners passed into `someElement.addEventListener()`
@@ -272,11 +283,9 @@ var instructor = {
 instructor.displayFoods();
 ```
 
-**Mini-exercise**: Use what we know about scope to explain why this works.
-
 ## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
 
-## Bonus Exercise: Calculator with 'memory'
+Use what we know about scope to explain why this works.
 
 ## Peek Ahead: OOP Javascript
 
@@ -288,7 +297,10 @@ An example of what this might look like:
 
 [ATM.js](https://github.com/ga-wdi-exercises/atm/blob/solution/solution/js/src/atm.js)
 [Tunr Song Model](https://github.com/ga-wdi-exercises/tunr_node_oojs/blob/oojs_cud/public/js/models/artist.js)
-## Bonus Content: Bind/Call/Apply
+
+-------
+
+## Bind/Call/Apply (Bonus)
 
 There are two other ways to invoke a function and change the context, which are very similar: `bind`, `call`, and `apply`.
 
@@ -348,16 +360,21 @@ sayHello.call(cat, "peachpuff");
 
 [More information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
+--------
+
 ## Summary
 
 Note that #1 is included here for correctness, we haven't covered object constructors yet, but will soon.
 
 > 1. Is the function called with `new` (**new binding**)? If so, `this` is the newly constructed object.
 >     `var supremePizza = new Pizza()`
+>  
 > 2. Is the function called with `call` or `apply` (**explicit binding**), even hidden inside a `bind` *hard binding*? If so, `this` is the explicitly specified object.
 >     `var bakedPizza = bake.call( rawPizza )`
+>  
 > 3. Is the function called with a context (**implicit binding**), otherwise known as an owning or containing object? If so, `this` is *that* context object.
 >     `var bakedPizza = rawPizza.bake()`
+>  
 > 4. Otherwise, default the `this` (**default binding**). If in `strict mode`, pick `undefined`, otherwise pick the `global` object.
 >     `var probablyWontWork = bake()`
 >
