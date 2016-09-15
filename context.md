@@ -36,9 +36,9 @@ Here's an example of the most common way context is determined for a function. W
 
 ```js
 var user = {
-  name: "John",
+  firstName: "John",
   sayName: function(){
-      alert("My name is " + this.name + ".");
+      alert("My name is " + this.firstName + ".");
   }
 }
 user.sayName();
@@ -67,10 +67,10 @@ console.log(this)
 
 ```js
 var instructor = {
-  name: "Adam Bray",
+  fullName: "Adam Bray",
   favoriteFood: "Spicy Miso Ramen",
   sayHello: function() {
-    console.log("Hi! My name is " + this.name + ", and my favorite food is " + this.favoriteFood);
+    console.log("Hi! My name is " + this.fullName + ", and my favorite food is " + this.favoriteFood);
   }
 }
 
@@ -213,11 +213,11 @@ Consider the following example...
 
 ```js
 var instructor = {
-  name: "Adam Bray",
+  fullName: "Adam Bray",
   favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
 
   displayFoods: function() {
-    console.log("Things " + this.name + " likes:")
+    console.log("Things " + this.fullName + " likes:")
     this.favoriteFoods.forEach(function(food) {
       console.log(food);
     })
@@ -234,12 +234,12 @@ Now what about this *slightly* modified example...
 
 ```js
 var instructor = {
-  name: "Adam Bray",
+  fullName: "Adam Bray",
   favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
 
   displayFoods: function() {
     this.favoriteFoods.forEach(function(food) {
-      console.log(this.name + " likes " + food);
+      console.log(this.fullName + " likes " + food);
     })
   }
 
@@ -265,12 +265,12 @@ One trick is to store the `this` you want in another variable, commonly named `s
 
 ```js
 var instructor = {
-  name: "Adam Bray",
+  fullName: "Adam Bray",
   favoriteFoods: ["Ramen", "Cap'n Crunch", "Tacos"],
   displayFoods: function() {
     var self = this;
     this.favoriteFoods.forEach(function(food) {
-      console.log(self.name + " likes " + food);
+      console.log(self.fullName + " likes " + food);
     })
   }
 }
@@ -291,10 +291,10 @@ Use what we know about scope to explain why this works.
 ```js
 /*A*/
 var user = {
-    name: "john",
+    firstName: "john",
     capitalized: function(){
         /*B*/
-        return this.name.substring(0,1).toUpperCase() + this.name.substring(1);
+        return this.firstName.substring(0,1).toUpperCase() + this.firstName.substring(1);
     },
     sayName: function(){
         /*C*/
@@ -306,7 +306,7 @@ console.log("Welcome, " + user.capitalized() + "!");
 $("button").on("click", user.sayName);
 $("input").on("keydown", function(){
     /*D*/
-    console.log("Keypress detected for " + this.name);
+    console.log("Keypress detected for " + this.firstName);
 });
 user.sayName();
 /*E*/
