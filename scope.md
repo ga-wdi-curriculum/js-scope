@@ -25,24 +25,24 @@ Chances are, you'll be asked about it during technical interviews too.
 
 ## Quick Example
 
+Here's a code snippet that, when run, demonstrates some of Javascript's fundamental rules of scope...
+
 ```js
-function demo0() {
-  thingToDo = "boop";
+function getColor() {
+  color = "red";
 }
 
-demo0();
-console.log(thingToDo); // What should we see in the console?
+getColor();
+console.log(color); // What should we see in the console?
 
 
-function demo1() {
-  var recipient = "ur nose";
+function getAnotherColor() {
+  var anotherColor = "green";
 }
 
-demo1();
-console.log(recipient); // What should we see in the console?
+getAnotherColor();
+console.log(anotherColor); // What should we see in the console?
 ```
-
-What do we expect this code to do? Run it and see! Why?
 
 ## Rules of Scope in JS
 
