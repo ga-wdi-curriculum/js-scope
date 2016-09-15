@@ -106,6 +106,48 @@ console.dir(window); // Which of the variables are accessible in here?
 
 </details>
 
+## Hoisting
+
+### Functions
+
+A Javascript feature that may impact scope his **hoisting**. This applies to Javascript functions.
+
+There are two ways to declare functions in Javascript:
+
+```js
+var sayHello = function(){
+    console.log("Hello!");
+}
+
+function sayHello(){
+    console.log("Hello!");
+}
+```
+
+`var sayHello = function` is called a **function expression**. It follows the same rules as variables (except it's a function): it's only available in the lines after it.
+
+`function sayHello`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
+
+Aside from that, they are functionally equivalent.
+
+### Variables
+
+Variables are hoisted too, but *their values are not*.
+
+```js
+console.log("My name is " + name);
+
+var name = "John";
+
+// My name is undefined
+```
+
+```js
+console.log("My name is " + name);
+
+// Uncaught ReferenceError: name is not defined
+```
+
 ### You Do: An Even More Complex Example (15 minutes / 0:45)
 
 > 10 minutes exercise. 5 minutes review.
@@ -128,7 +170,7 @@ function displayPerson(fname, lname){ // What scope are these arguments?
 
   function getFullName(){
     var suffix = "Esq.";  // What scope is this?
-    return  fullName = prefix + " " + fname + " " + lname + " " + suffix;
+    return fullName = prefix + " " + fname + " " + lname + " " + suffix;
   };
 
   return getFullName();

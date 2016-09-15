@@ -337,7 +337,7 @@ When the code above is executed...
 5. Why does the `user.sayName()` at the end **not** throw an error?
     1. Because `this` is `user`: what was to the left of the period
     - Because `user` didn't exist until it was created with the click event
-    - Because it is called in the global scope.
+    - Because it is called in the global scope
 
 <details>
 
