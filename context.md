@@ -353,6 +353,12 @@ When the code above is executed...
 
 </details>
 
+## Next Steps
+
+Read through the bonus section of this lesson plan, paying attention to the `bind`, `call` and `apply` methods. These are ways for you to exercise more control over and gain the ability to re-assign context.
+
+Also take a look at this repo, which compares good and bad ways to apply context. We suggest reading up on `bind`, `call` and `apply` before doing so, however, since the examples make use of some of these methods.
+
 ## Peek Ahead: OOP Javascript
 
 Often we have multiple pieces of data in our program that share the same structure. Think flash cards, trivia cards, bank accounts, etc.
@@ -445,7 +451,6 @@ Note that #1 is included here for correctness, we haven't covered object constru
 >     `var probablyWontWork = bake()`
 >
 > Source: [You-Dont-Know-JS/ch2.md](https://github.com/getify/You-Dont-Know-JS/blob/58dbf4f867be0d9c51dfc341765e4e4211608aa1/this%20&%20object%20prototypes/ch2.md)
-
 
 ## References
 
