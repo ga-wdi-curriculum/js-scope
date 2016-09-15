@@ -12,7 +12,7 @@
 
 In Javascript, context tells us where functions are invoked.
 
-In short, the context is the object that a function is attached to. We'll see that context can change under certain circumstances).
+In short, the context is the object that a function is attached to. We'll see that context can change under certain circumstances.
 
 Every time a Javascript function is called, a context is determined / set. That context is always an object, and can be referenced in the function definition (code) using a special keyword in JS, `this`.
 
