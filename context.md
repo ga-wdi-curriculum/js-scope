@@ -278,12 +278,6 @@ var instructor = {
 instructor.displayFoods();
 ```
 
-## Exercise: [Cat Surprise](https://github.com/ga-wdi-exercises/cat-surprise)
-
-Use what we know about scope to explain why this works.
-
-<!-- AM: Is there a more valuable exercise that can be used here? -->
-
 ## You Do: Test Your Context Knowledge (15 minutes / 2:05)
 
 > 10 minutes exercise. 5 minutes review.
