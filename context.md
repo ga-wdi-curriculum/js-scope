@@ -357,7 +357,7 @@ When the code above is executed...
 
 Read through the bonus section of this lesson plan, paying attention to the `bind`, `call` and `apply` methods. These are ways for you to exercise more control over and gain the ability to re-assign context.
 
-Also take a look at this repo, which compares good and bad ways to apply context. We suggest reading up on `bind`, `call` and `apply` before doing so, however, since the examples make use of some of these methods.
+Also [take a look at this repo](https://github.com/ga-wdi-exercises/js_context_and_this/), which compares good and bad ways to apply context. We suggest reading up on `bind`, `call` and `apply` before doing so, however, since the examples make use of some of these methods.
 
 ## Peek Ahead: OOP Javascript
 
