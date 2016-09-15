@@ -328,6 +328,7 @@ When the code above is executed...
     1. Because there aren't parentheses after `user.sayName`
     - Because `user.sayName` is in an event so `this` is not `user`
     - Because you can't use `alert` inside a function
+    - Because `user` is not accessible in the scope of the event listener
 4. What is the value of `this` at D?
     1. The `keydown` event
     - `Window`
@@ -336,7 +337,7 @@ When the code above is executed...
 5. Why does the `user.sayName()` at the end **not** throw an error?
     1. Because `this` is `user`: what was to the left of the period
     - Because `user` didn't exist until it was created with the click event
-    - Because I prayed really hard when writing this that it would work
+    - Because it is called in the global scope.
 
 <details>
 
