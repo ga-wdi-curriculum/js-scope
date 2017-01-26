@@ -140,12 +140,6 @@ var firstName = "John";
 // My name is undefined
 ```
 
-```js
-console.log("My name is " + firstName);
-
-// Uncaught ReferenceError: firstName is not defined
-```
-
 ### You Do: An Even More Complex Example (15 minutes / 0:45)
 
 > 10 minutes exercise. 5 minutes review.
