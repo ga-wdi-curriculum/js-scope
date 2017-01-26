@@ -168,7 +168,7 @@ function displayPerson(fname, lname){ // What scope are these arguments?
   return getFullName();
 };
 
-function removeYears(){
+var removeYears = function(){
   var minusYears = 10  // What scope is this?
   var age = 49; // What scope is this?
   return age - minusYears;
