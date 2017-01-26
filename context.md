@@ -99,7 +99,7 @@ console.log(bravo.housewife) // >>"Nene Leakes"
 
 *But what if we want more control?*
 
-Because we've written a method to set the `pilot` property, we can use that method to provide more control. For example... what if we wanted to prevent inexperienced pilots from flying?
+Because we've written a method to set the `housewife` property, we can use that method to provide more control. For example... what if we wanted to prevent inexperienced housewives from starting drama?
 
 ```js
 var bravo = {
