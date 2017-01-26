@@ -129,21 +129,22 @@ var bravo = {
 We can also use `this` to reference and call other methods on the object.
 
 ```js
-var xwing = {
-    pilot: null,
+var bravo = {
+    housewife: null,
 
-    setPilot: function(newPilot) {
-        this.pilot = newPilot;
-        this.updateYoda();
+    setHousewife: function(newHousewife) {
+        this.housewife = newHousewife;
+        this.updateAndy();
     },
 
-    updateYoda: function() {
-      console.log("Yoda, we have got a new pilot!");
+    updateAndy: function() {
+      console.log("Andy, we have got a new housewife!");
     }
 };
 
-xwing.setPilot("Luke Skywalker"); // "Yoda, we have got a new pilot!"
-xwing.pilot //  >> "Luke Skywalker"
+bravo.setHousewife("Nene Leakes"); // "Andy, we have got a new housewife!"
+console.log(bravo.housewife) //  >> "Nene Leakes"
+
 ```
 
 ## Other `this` Cases (10 minutes / 1:40)
@@ -213,7 +214,7 @@ Consider the following example...
 
 ```js
 var instructor = {
-  fullName: "Adam Bray",
+  fullName: "Angel Valant",
   favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
 
   displayFoods: function() {
@@ -234,7 +235,7 @@ Now what about this *slightly* modified example...
 
 ```js
 var instructor = {
-  fullName: "Adam Bray",
+  fullName: "Angel Valant",
   favoriteFoods: ["Ramen", "Capn Crunch", "Tacos"],
 
   displayFoods: function() {
@@ -265,7 +266,7 @@ One trick is to store the `this` you want in another variable, commonly named `s
 
 ```js
 var instructor = {
-  fullName: "Adam Bray",
+  fullName: "Angel Valant",
   favoriteFoods: ["Ramen", "Cap'n Crunch", "Tacos"],
   displayFoods: function() {
     var self = this;
@@ -376,7 +377,7 @@ These let you "force" `this` to be something specific.
 
 ```js
 var instructor = {
-  name: "Adam Bray",
+  name: "Angel Valant",
   favoriteFoods: ["Ramen", "Cap'n Crunch", "Tacos"],
   displayFoods: function() {
     this.favoriteFoods.forEach(function(food) {
