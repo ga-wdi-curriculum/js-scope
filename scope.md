@@ -48,11 +48,11 @@ console.log(anotherColor); // What should we see in the console?
 
 In Javascript, there are two types of scope: **global scope** and **local scope**.
 
-There are four simple rules regarding scope in JS...
+There are four simple rules to know right now regarding scope in JS...
 
 1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope. **This is bad form.**
 2. Variables created **with** the `var` keyword are created in the current local scope.
-3. All functions (and only functions) create a new local scope.
+3. All functions create a new local scope.
 4. The current scope includes all outer (enclosing) scopes.
 
 > One consequence of rule 3 is that variables defined outside of any function are inherently global, even if the `var` keyword is used.
