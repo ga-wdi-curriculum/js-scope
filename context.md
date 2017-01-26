@@ -66,14 +66,15 @@ console.log(this)
 
 ```js
 var instructor = {
-  fullName: "Adam Bray",
-  favoriteFood: "Spicy Miso Ramen",
-  sayHello: function() {
-    console.log("Hi! My name is " + this.fullName + ", and my favorite food is " + this.favoriteFood);
+  fullName: "Nayana Davis",
+  favoriteFood: "Fried Chicken",
+  sayHello: function(){
+    console.log(`Hi my name is ${this.fullName} and my favorite food is ${this.favoriteFood}`)
   }
 }
 
-instructor.sayHello() // for this function invocation, `this` is `instructor`
+instructor.sayHello(); // for this function invocation, `this` is `instructor`
+
 ```
 
 ### 'Setting' Properties using `this`
