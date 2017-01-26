@@ -120,7 +120,7 @@ var bravo = {
   bravo.setHousewife("Nene Leakes"); // "She's ready to start drama!"
   bravo.housewife //  >> "Nene Leakes"
 
-  xwing.setPilot("Nayana Davis"); //"Still in training, that housewife is."
+  bravo.setHousewife("Nayana Davis"); //"Still in training, that housewife is."
   console.log(bravo.housewife);  // >> "Nene Leakes"
 ```
 
