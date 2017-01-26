@@ -5,8 +5,7 @@
 - Explain Javascript 'context' and what the value of the 'this' keyword refers to
 - Explain what the default context of Javascript executing in the browser is
 - Use the 'this' keyword to set and retrieve a property in a Javascript function
-- Use bind to create a new method bound to an object context
-- Use apply/call to execute a method in a different context
+
 
 ## What is Context? (20 minutes / 1:30)
 
