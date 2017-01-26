@@ -15,7 +15,7 @@ In short, the context is the object that a function is attached to. We'll see th
 
 Every time a Javascript function is called, a context is determined / set. That context is always an object, and can be referenced in the function definition (code) using a special keyword in JS, `this`.
 
-We use this similar to the way we use pronouns in natural languages like English and French. Say we write:
+We use `this` similar to the way we use pronouns in natural languages like English and French. Say we write:
 
 ```
  “John is running fast because he is trying to catch the train.”
