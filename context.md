@@ -84,19 +84,17 @@ instructor.sayHello(); // for this function invocation, `this` is `instructor`
 This feature allows not just 'getting' property info on objects, but also setting properties. Consider this example:
 
 ```js
-var xwing = {
-    pilot: null,
+var bravo = {
+  housewife: null,
 
-    setPilot: function(newPilot) {
-        this.pilot = newPilot;
-    }
+  setHousewife: function(newHousewife) {
+    this.housewife = newHousewife;
+  }
 };
 
-xwing.setPilot("Luke Skywalker"); //
-xwing.pilot //  >> "Luke Skywalker"
+bravo.setHousewife("Nene Leakes");
+console.log(bravo.housewife) // >>"Nene Leakes"
 
-xwing.setPilot("Andy Kim");
-xwing.pilot;  // >> "Andy Kim"
 ```
 
 *But what if we want more control?*
