@@ -117,8 +117,8 @@ var sayHello = function(){
     console.log("Hello!");
 }
 
-function sayHello(){
-    console.log("Hello!");
+function sayGoodbye(){
+    console.log("Goodbye!");
 }
 ```
 
