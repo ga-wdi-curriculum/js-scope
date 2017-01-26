@@ -102,26 +102,26 @@ console.log(bravo.housewife) // >>"Nene Leakes"
 Because we've written a method to set the `pilot` property, we can use that method to provide more control. For example... what if we wanted to prevent inexperienced pilots from flying?
 
 ```js
-var xwing = {
-    pilot: null,
+var bravo = {
+    housewife: null,
 
-    setPilot: function(newPilot) {
-      if (newPilot === "Andy Kim") {
-        console.log("Still in training, that pilot is.")  
+    setHousewife: function(newHousewife) {
+      if (newHousewife === "Nayana Davis") {
+        console.log("Still in training, that housewife is.")
       }
-      else {        
-        this.pilot = newPilot;
-        console.log("Pilot changed!")
+      else {
+        this.housewife = newHousewife;
+        console.log("She's ready to start drama!")
       }
     }
   };
 
-xwing.setPilot("Luke Skywalker"); // "Pilot changed!"
-xwing.pilot //  >> "Luke Skywalker"
 
+  bravo.setHousewife("Nene Leakes"); // "She's ready to start drama!"
+  bravo.housewife //  >> "Nene Leakes"
 
-xwing.setPilot("Andy Kim"); // "Still in training, that pilot is."
-xwing.pilot;  // >> "Luke Skywalker"
+  xwing.setPilot("Nayana Davis"); //"Still in training, that housewife is."
+  console.log(bravo.housewife);  // >> "Nene Leakes"
 ```
 
 ### 'Running' methods using `this`
