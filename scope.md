@@ -87,8 +87,8 @@ function playBaseball() {
 
 playBaseball();
 
-console.log(teamName); // Does this work?
-console.log(teamCity);   // Does this work?
+console.log(teamCity); // Does this work?
+console.log(teamName);   // Does this work?
 
 console.log(pitcherName); // Does this work?
 console.log(batterName);  // Does this work?
