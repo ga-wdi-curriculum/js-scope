@@ -124,7 +124,7 @@ function sayGoodbye(){
 
 `var sayHello = function` is called a **function expression**. It follows the same rules as variables (except it's a function): it's only available in the lines after it.
 
-`function sayHello`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
+`function sayGoodbye`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
 
 Aside from that, they are functionally equivalent.
 
