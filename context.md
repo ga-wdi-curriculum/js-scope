@@ -84,44 +84,49 @@ instructor.sayHello(); // for this function invocation, `this` is `instructor`
 This feature allows not just 'getting' property info on objects, but also setting properties. Consider this example:
 
 ```js
-var bravo = {
-  housewife: null,
-
-  setHousewife: function(newHousewife) {
-    this.housewife = newHousewife;
+var user = {
+  userName: "AndyWhitley",
+  isSignedIn: false,
+  signIn: function() {
+    this.isSignedIn = true
+  },
+  signOut: function() {
+    this.isSignedIn = false
   }
-};
+}
 
-bravo.setHousewife("Nene Leakes");
-console.log(bravo.housewife) // >>"Nene Leakes"
-
+user.signIn()
+user.isSignedIn // => true
+user.signOut()
+user.isSignedIn // => false
 ```
+
 
 *But what if we want more control?*
 
-Because we've written a method to set the `housewife` property, we can use that method to provide more control. For example... what if we wanted to prevent inexperienced housewives from starting drama?
+Because we've written a method to set the `isSignedIn` property, we can use that method to provide more control. For example... what if we wanted to check a user's password before letting them sign in?
 
 ```js
-var bravo = {
-    housewife: null,
-
-    setHousewife: function(newHousewife) {
-      if (newHousewife === "Nayana Davis") {
-        console.log("Still in training, that housewife is.")
-      }
-      else {
-        this.housewife = newHousewife;
-        console.log("She's ready to start drama!")
-      }
+var user = {
+  userName: "AndyWhitley",
+  password: "password1234",
+  isSignedIn: false,
+  signIn: function(pwd) {
+    if(pwd === this.password) {
+      this.isSignedIn = true  
     }
-  };
+  },
+  signOut: function() {
+    this.isSignedIn = false
+  }
+}
 
-
-  bravo.setHousewife("Nene Leakes"); // "She's ready to start drama!"
-  bravo.housewife //  >> "Nene Leakes"
-
-  bravo.setHousewife("Nayana Davis"); //"Still in training, that housewife is."
-  console.log(bravo.housewife);  // >> "Nene Leakes"
+user.signIn("tacobell")
+user.isSignedIn // => false
+user.signIn("password1234")
+user.isSignedIn // => true
+user.signOut()
+user.isSignedIn // => false
 ```
 
 ### 'Running' methods using `this`
@@ -129,22 +134,32 @@ var bravo = {
 We can also use `this` to reference and call other methods on the object.
 
 ```js
-var bravo = {
-    housewife: null,
-
-    setHousewife: function(newHousewife) {
-        this.housewife = newHousewife;
-        this.updateAndy();
-    },
-
-    updateAndy: function() {
-      console.log("Andy, we have got a new housewife!");
+var user = {
+  userName: "AndyWhitley",
+  password: "password1234",
+  isSignedIn: false,
+  signIn: function(pwd) {
+    if(pwd === this.password) {
+      this.isSignedIn = true
+      this.greetUser()
     }
-};
+  },
+  signOut: function() {
+    this.isSignedIn = false
+  },
+  greetUser: function() {
+    console.log("Welcome back " + this.userName)
+  }
+}
 
-bravo.setHousewife("Nene Leakes"); // "Andy, we have got a new housewife!"
-console.log(bravo.housewife) //  >> "Nene Leakes"
-
+user.signIn("tacobell")
+user.isSignedIn // => false
+user.signIn("password1234")
+// => Welcome back AndyWhitley
+user.isSignedIn // => true
+user.signOut()
+user.isSignedIn // => false
+-
 ```
 
 ## Other `this` Cases (10 minutes / 1:40)
@@ -310,27 +325,27 @@ user.sayName();
 When the code above is executed...
 
 1. What is the value of `this` at A?
-    1. `Window`
+    - `Window`
     - `null`
     - `user`
     - `$` (jQuery)
 2. What is the value of `this` at B?
-    1. `Window`
+    - `Window`
     - `null`
     - `user`
     - `$` (jQuery)
 3. Why does the click event throw an error?
-    1. Because there aren't parentheses after `user.sayName`
+    - Because there aren't parentheses after `user.sayName`
     - Because `user.sayName` is in an event so `this` is not `user`
     - Because you can't use `alert` inside a function
     - Because `user` is not accessible in the scope of the event listener
 4. What is the value of `this` at D?
-    1. The `keydown` event
+    - The `keydown` event
     - `Window`
     - The element that was keyed-down upon
     - `user`
 5. Why does the `user.sayName()` at the end **not** throw an error?
-    1. Because `this` is `user`: what was to the left of the period
+    - Because `this` is `user`: what was to the left of the period
     - Because `user` didn't exist until it was created with the click event
     - Because it is called in the global scope
 
@@ -342,7 +357,7 @@ When the code above is executed...
     <li>`Window`</li>
     <li>`user`</li>
     <li>Because `user.sayName` is in an event so `this` is not `user`. In an event listener `this` is always the HTML element that triggered the event.</li>
-    <li>The element that was keyed-down upon</li>
+    <li>The `input` that was keyed-down upon</li>
     <li>Because `this` is `user`: what was to the left of the period</li>
   </ol>
 
