@@ -1,3 +1,4 @@
+```js
 (function() {
   "use strict";
 
@@ -13,3 +14,4 @@
 
   instructor.displayFoods();
 })();
+```

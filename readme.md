@@ -4,9 +4,12 @@ This lesson will cover two concepts that are crucial to writing strong, robust c
 
 To explore these concepts we will be taking an approach of looking at a series of examples to unveil the mechanics of scope and context. Through comparing and contrasting code examples look that seem similar, yet behave differently, we'll look highlight how scope and context operate in Javascript. The examples ultimately aim to illustrate that the way that code is written and structured affects how and where its program data can be accessed.
 
-By the end of this lesson you should begin to be able to define scope and context and supporting your explanation with examples. If you feel tentative about your grasp on these concepts, spend time not only comparing and contrasting code examples and how they behave, but developing your mental process of hypothesizing about the behavior of code you read.
+# Part I: [Scope](scope.md)
+# Part II: [Context](context.md)
 
-We will also be better readers of code by the end of this lesson!
+# Additional Reading
+- Closely related to the concept of scope is the concept of [closures](closures.md).
 
-# Part I: [Scope](scope.md) (1:10, 70min)
-# Part II: [Context](context.md) (1:20, 150min)
+## Appendix
+- [Context and Shared Functions Between Objects](sharing_functions.md)
+- [Scope/Closures and "use strict"](strict_demo.md)
