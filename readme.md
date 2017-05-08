@@ -6,3 +6,10 @@ This lesson is going to feel more conceptual than previous ones and will make us
 
 # Part I: [Scope](scope.md)
 # Part II: [Context](context.md)
+
+# Additional Reading
+- Closely related to the concept of scope is the concept of [closures](closures.md).
+
+## Appendix
+- [Context and Shared Functions Between Objects](sharing_functions.md)
+- [Scope/Closures and "use strict"](strict_demo.md)

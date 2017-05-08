@@ -2,10 +2,10 @@
 
 ## Learning Objectives
 
-- Explain Javascript 'context' and what the value of the 'this' keyword refers to
-- Explain what the default context of Javascript executing in the browser is
-- Use the 'this' keyword to set and retrieve a property in a Javascript function
-- Use bind to create a new method bound to an object context
+- Explain Javascript 'context' and how it affects the value of keyword 'this'
+- Identify the default context of browser-executed Javascript
+- Use keyword 'this' to access methods and properties
+- Use `.bind` to link and glue a new method to an object context
 - Use apply/call to execute a method in a different context
 
 
