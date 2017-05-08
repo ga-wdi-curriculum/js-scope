@@ -2,10 +2,9 @@
 
 ## Learning Objectives
 
-- Define 'scope' in the context of programming
-- Describe the rules of scope in Javascript
-- Give an example of a function declaration and a function expression
-- Describe the impact of hoisting on variable scope
+- Describe **scope** and how it governs how data is able to accessed in code
+- Give an example of a **function declaration** and a **function expression**
+- Describe the impact of **hoisting** on variable **scope**
 
 ## Why Scope? Why Now?
 
