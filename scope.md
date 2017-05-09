@@ -125,7 +125,7 @@ function sayHello(){
 
 <details>
   <summary>
-    Which is a **function declaration**? Which is a **function expression**?
+    Which is a <strong>function declaration</strong>? Which is a <strong>function expression</strong>?
   </summary>
   <code>var sayHello = function(){}</code> is a <strong>function expression</strong>.
   <code>function sayHello(){}</code> is a <strong>function declaration</strong>.
