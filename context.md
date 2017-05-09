@@ -71,12 +71,11 @@ var instructor = {
   fullName: "Nayana Davis",
   favoriteFood: "Fried Chicken",
   sayHello: function(){
-    console.log(`Hi my name is ${this.fullName} and my favorite food is ${this.favoriteFood}`)
+    console.log('Hi my name is ' + this.fullName + ' and my favorite food is ' + this.favoriteFood)
   }
 }
 
 instructor.sayHello(); // for this function invocation, `this` is `instructor`
-
 ```
 
 ### 'Setting' Properties using `this`

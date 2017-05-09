@@ -2,10 +2,9 @@
 
 ## Learning Objectives
 
-- Define 'scope' in the context of programming
-- Describe the rules of scope in Javascript
-- Give an example of a function declaration and a function expression
-- Describe the impact of hoisting on variable scope
+- Describe **scope** and how it governs how data is able to be accessed in code
+- Give an example of a **function declaration** and a **function expression**
+- Describe the impact of **hoisting** on variable **scope**
 
 ## Why Scope? Why Now?
 
@@ -25,7 +24,7 @@ Chances are, you'll be asked about it during technical interviews too.
 
 ## Quick Example
 
-Here's a code snippet that, when run, demonstrates some of Javascript's fundamental rules of scope...
+Here's a code snippet that demonstrates some of Javascript's fundamental rules of scope...
 
 ```js
 function getColor() {
@@ -48,7 +47,7 @@ console.log(anotherColor); // What should we see in the console?
 
 In Javascript, there are two types of scope: **global scope** and **local scope**.
 
-There are four simple rules to know right now regarding scope in JS...
+There are four simple rules that are helpful in introducing the concept of scope in JS...
 
 1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope. **This is bad form.**
 2. Variables created **with** the `var` keyword are created in the current local scope.
@@ -108,9 +107,9 @@ console.log(batterName);  // Does this work?
 
 ### Functions
 
-A Javascript feature that may impact scope his **hoisting**. This applies to Javascript functions.
+A Javascript feature that may impact scope is **hoisting**. This applies to Javascript functions.
 
-There are two ways to declare functions in Javascript:
+Recall that there are two ways to declare functions in Javascript, **function declarations** and **function expressions**.
 
 ```js
 var sayHello = function(){
@@ -122,15 +121,37 @@ function sayHello(){
 }
 ```
 
-`var sayHello = function` is called a **function expression**. It follows the same rules as variables (except it's a function): it's only available in the lines after it.
+#### Hoisting Review
 
-`function sayHello`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
+<details>
+  <summary>
+    Which is a **function declaration**? Which is a **function expression**?
+  </summary>
+  <code>var sayHello = function(){}</code> is a <strong>function expression</strong>.
+  <code>function sayHello(){}</code> is a <strong>function declaration</strong>.
+</details>
 
-Aside from that, they are functionally equivalent.
+<details>
+  <summary>
+    How **function declaration** differ from a **function expression**?
+  </summary>
+  A <strong>function expression</strong> follows the same rules as variable assignment. Since the value of the reference is a function, that function is only available in the lines after the value assignment.
+
+  With a <strong>function declaration</strong>, no matter where you put it in your code, it behaves as if you wrote it as the very first line in your code.
+
+  Aside from that, they are functionally equivalent.
+</details>
+
+
+
+
 
 ### Variables
 
-Variables are hoisted too, but *their values are not*.
+Variable are hoisted too, but *their values are not*. More precisely, variable initializations are hoisted, but value assignments are not hoisted.
+
+Variables are first **initialized**, meaning a space in memory is reserved or allocated for the name, but no value is assigned. That variable (or **reference**) will return `undefined` instead of triggering a `ReferenceError`.
+
 
 ```js
 console.log("My name is " + firstName);
