@@ -4,14 +4,14 @@ function demo() {
 }
 
 var instructor1 = {
-  name: "Adam Bray",
-  favoriteFood: "Spicy Miso Ramen",
+  name: "Nayana Davis",
+  favoriteFood: "Fried Chicken",
   sayHello: demo
 }
 
 var instructor2 = {
-  name: "Andy Kim",
-  favoriteFood: "Blue Crab",
+  name: "Andy Whitley",
+  favoriteFood: "Alabama Football",
   sayHello: demo
 }
 
