@@ -133,7 +133,7 @@ function sayHello(){
 
 <details>
   <summary>
-    How **function declaration** differ from a **function expression**?
+    How does a <strong>function declaration</strong> differ from a <strong>function expression</strong>?
   </summary>
   A <strong>function expression</strong> follows the same rules as variable assignment. Since the value of the reference is a function, that function is only available in the lines after the value assignment.
 
