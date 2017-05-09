@@ -127,19 +127,19 @@ function sayHello(){
   <summary>
     Which is a <strong>function declaration</strong>? Which is a <strong>function expression</strong>?
   </summary>
-  <code>var sayHello = function(){}</code> is a <strong>function expression</strong>.
-  <code>function sayHello(){}</code> is a <strong>function declaration</strong>.
+  <p><code>var sayHello = function(){}</code> is a <strong>function expression</strong>.</p>
+  <p><code>function sayHello(){}</code> is a <strong>function declaration</strong>.</p>
 </details>
 
 <details>
   <summary>
     How does a <strong>function declaration</strong> differ from a <strong>function expression</strong>?
   </summary>
-  A <strong>function expression</strong> follows the same rules as variable assignment. Since the value of the reference is a function, that function is only available in the lines after the value assignment.
+  <p>A <strong>function expression</strong> follows the same rules as variable assignment. Since the value of the reference is a function, that function is only available in the lines after the value assignment.</p>
 
-  With a <strong>function declaration</strong>, no matter where you put it in your code, it behaves as if you wrote it as the very first line in your code.
+  <p>With a <strong>function declaration</strong>, no matter where you put it in your code, it behaves as if you wrote it as the very first line in your code.</p>
 
-  Aside from that, they are functionally equivalent.
+  <p>Aside from that, they are functionally equivalent.</p>
 </details>
 
 
