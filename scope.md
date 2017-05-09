@@ -2,7 +2,7 @@
 
 ## Learning Objectives
 
-- Describe **scope** and how it governs how data is able to accessed in code
+- Describe **scope** and how it governs how data is able to be accessed in code
 - Give an example of a **function declaration** and a **function expression**
 - Describe the impact of **hoisting** on variable **scope**
 
@@ -24,7 +24,7 @@ Chances are, you'll be asked about it during technical interviews too.
 
 ## Quick Example
 
-Here's a code snippet that, when run, demonstrates some of Javascript's fundamental rules of scope...
+Here's a code snippet that demonstrates some of Javascript's fundamental rules of scope...
 
 ```js
 function getColor() {
@@ -47,7 +47,7 @@ console.log(anotherColor); // What should we see in the console?
 
 In Javascript, there are two types of scope: **global scope** and **local scope**.
 
-There are four simple rules to know right now regarding scope in JS...
+There are four simple rules that are helpful in introducing the concept of scope in JS...
 
 1. Variables created **without** the `var` keyword, no matter where in a program, are placed in the global scope. **This is bad form.**
 2. Variables created **with** the `var` keyword are created in the current local scope.
@@ -129,7 +129,10 @@ Aside from that, they are functionally equivalent.
 
 ### Variables
 
-Variables are hoisted too, but *their values are not*.
+Variable are hoisted too, but *their values are not*. More precisely, variable initializations are hoisted, but value assignments are not hoisted.
+
+Variables are first **initialized**, meaning a space in memory is reserved or allocated for the name, but no value is assigned. That variable (or **reference**) will return `undefined` instead of triggering a `ReferenceError`.
+
 
 ```js
 console.log("My name is " + firstName);
