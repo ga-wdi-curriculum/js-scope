@@ -19,4 +19,3 @@
 
   instructor.displayFoods();
 })();
-```
