@@ -7,13 +7,12 @@ To explore these concepts we will be looking at a series of examples that unveil
 # Part I: [Scope](scope.md)
 # Part II: [Context](context.md)
 
-# Additional Reading
+# Additional Course Reading
 - Closely related to the concept of scope is the concept of [closures](closures.md).
 
-## Examples
+# Examples
 - [Context and Shared Functions Between Objects](sharing_functions.md)
 - [Scope/Closures and "use strict"](strict_demo.md)
 
-
-## Additional Reading
+# External Resources
 - 🔥🔥🔥 [You Don't Know JS: Scope & Closures ](https://github.com/getify/You-Dont-Know-JS/tree/master/scope%20%26%20closures) 🔥🔥🔥 (very detailed)
