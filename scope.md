@@ -164,7 +164,7 @@ function sayHello(){
 
 ### Variables
 
-Variable are hoisted too, but *their values are not*. More precisely, variable initializations are hoisted, but value assignments are not hoisted.
+Variables are hoisted too, but *their values are not*. More precisely, variable initializations are hoisted, but value assignments are not hoisted.
 
 Variables are first **initialized**, meaning a space in memory is reserved or allocated for the name, but no value is assigned. That variable (or **reference**) will return `undefined` instead of triggering a `ReferenceError`.
 
