@@ -107,9 +107,9 @@ console.log(batterName);  // Does this work?
 
 ### Functions
 
-A Javascript feature that may impact scope his **hoisting**. This applies to Javascript functions.
+A Javascript feature that may impact scope is **hoisting**. This applies to Javascript functions.
 
-There are two ways to declare functions in Javascript:
+Recall that there are two ways to declare functions in Javascript, **function declarations** and **function expressions**.
 
 ```js
 var sayHello = function(){
@@ -121,11 +121,30 @@ function sayHello(){
 }
 ```
 
-`var sayHello = function` is called a **function expression**. It follows the same rules as variables (except it's a function): it's only available in the lines after it.
+#### Hoisting Review
 
-`function sayHello`is a **function declaration**. No matter where you put it in your code, it behaves as if you wrote it as the very first line in your code. This is called **hoisting**.
+<details>
+  <summary>
+    Which is a **function declaration**? Which is a **function expression**?
+  </summary>
+  <code>var sayHello = function(){}</code> is a <strong>function expression</strong>.
+  <code>function sayHello(){}</code> is a <strong>function declaration</strong>.
+</details>
 
-Aside from that, they are functionally equivalent.
+<details>
+  <summary>
+    How **function declaration** differ from a **function expression**?
+  </summary>
+  A <strong>function expression</strong> follows the same rules as variable assignment. Since the value of the reference is a function, that function is only available in the lines after the value assignment.
+
+  With a <strong>function declaration</strong>, no matter where you put it in your code, it behaves as if you wrote it as the very first line in your code.
+
+  Aside from that, they are functionally equivalent.
+</details>
+
+
+
+
 
 ### Variables
 
